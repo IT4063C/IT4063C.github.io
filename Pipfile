@@ -21,6 +21,8 @@ opendatasets = "*"
 sodapy = "*"
 pymongo = {extras = ["srv"], version = "*"}
 python-dotenv = "*"
+google-api-python-client = "*"
+youtube-transcript-api = "*"
 
 [dev-packages]
 
