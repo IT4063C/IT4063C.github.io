@@ -10,6 +10,7 @@ This site contains the syllabus, guides, labs, and instructor notes for the IT40
 ### About the Technical tools used in building this site
 - Docusaurus
 - nbdoc
+- git secret
 
 ### Installation
 
