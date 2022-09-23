@@ -31,5 +31,6 @@ docs/.ipynb_checkpoints/
 blog/.ipynb_checkpoints/
 .ipynb_checkpoints/
 
-.ipynb_checkpoints
-Untitled*.ipynb
+.gitsecret/keys/random_seed
+!*.secret
+**/*/.env
