@@ -24,6 +24,7 @@ python-dotenv = "*"
 google-api-python-client = "*"
 youtube-transcript-api = "*"
 seaborn = "*"
+scipy = "*"
 
 [dev-packages]
 

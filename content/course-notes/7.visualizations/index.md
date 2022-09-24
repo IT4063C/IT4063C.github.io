@@ -19,3 +19,6 @@ There are 2 main types of data visualization:
 - Univariate: where you have one variable
 - Bivariate: where you have 2 variables
 - Multivariate: where you have more than 2 variables
+
+
+https://courses.helsinki.fi/sites/default/files/course-material/4509270/IntroDS-03.pdf
