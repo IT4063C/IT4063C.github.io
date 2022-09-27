@@ -22,3 +22,11 @@ There are 2 main types of data visualization:
 
 
 https://courses.helsinki.fi/sites/default/files/course-material/4509270/IntroDS-03.pdf
+
+https://share.mindmanager.com/#publish/LNTmuYzLEKtQcVbSd1XU18immd4PsYbm20tlmSlj
+
+https://infogram.com/page/choose-the-right-chart-data-visualization
+
+https://plotnine.readthedocs.io/en/stable/
+
+https://courses.helsinki.fi/sites/default/files/course-material/4509270/IntroDS-03.pdf
