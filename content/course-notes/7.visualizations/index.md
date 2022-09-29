@@ -3,17 +3,21 @@ sidebar_position: 1
 title: Visualization tools
 draft: true
 ---
-- Matplotlib
-- Seaborn
-- Plotly
-- altair
-- https://plotnine.readthedocs.io/en/stable/
-- Tableau
-- Bokeh
-  - https://www.google.com/url?sa=i&url=https%3A%2F%2Ftowardsdatascience.com%2Fbeautiful-and-easy-plotting-in-python-pandas-bokeh-afa92d792167&psig=AOvVaw2wm8NeAeCZbF1uZatyRDcA&ust=1663951632904000&source=images&cd=vfe&ved=0CA0QjhxqFwoTCLC7pYPtqPoCFQAAAAAdAAAAABAD
-
-
+# Overview
 Data visualization is the process of transforming data into visual representations. It's a way to communicate information clearly and effectively.
+We've talked about the importance of data visualization in the previous section, we also talked about how visualizations can aid in the Exploratory Data Analysis. In this section, we'll talk about the tools that we can use to visualize data. 
+
+- [Matplotlib](https://matplotlib.org/)
+- [Seaborn](https://seaborn.pydata.org/)
+- [Plotly](https://plotly.com/python)
+- [altair](https://altair-viz.github.io/)
+- [Plotnine](https://plotnine.readthedocs.io/en/stable/)
+- [Bokeh](https://bokeh.org/)
+  - https://towardsdatascience.com/beautiful-and-easy-plotting-in-python-pandas-bokeh-afa92d792167
+- [SweetViz](https://github.com/fbdesignpro/sweetviz)
+
+Exploratory vs Explanatory Data Analysis:
+* https://www.kdnuggets.com/2019/09/exploratory-data-analysis-vs-explanatory-data-analysis.html
 
 There are 2 main types of data visualization:
 - Univariate: where you have one variable
