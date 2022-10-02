@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
-title: Visualization tools
-draft: true
+title: Visualization
+draft: false
 ---
 
 
@@ -14,15 +14,15 @@ In a pervious module, we talked about how data visualization aids in the explora
 We will use different libraries to create visualizations. We will use `matplotlib` and `seaborn` to create static visualizations. We will use `plotly` to create interactive visualizations. We will use `folium` to create interactive maps.
 
 Links to the libraries:
-- [Matplotlib](https://matplotlib.org/) - a Python 2D plotting library which produces publication quality figures in a variety of hardcopy formats and interactive environments across platforms.
-- [Seaborn](https://seaborn.pydata.org/) - a Python data visualization library based on matplotlib. It provides a high-level interface for drawing attractive and informative statistical graphics.
-- [Plotly](https://plotly.com/python) - an open-source, interactive graphing library for Python.
-- [altair](https://altair-viz.github.io/) - a declarative statistical visualization library for Python, based on Vega and Vega-Lite.
-- [Plotnine](https://plotnine.readthedocs.io/en/stable/) - a grammar of graphics for Python based on ggplot2.
-- [Bokeh](https://bokeh.org/) - an interactive visualization library that targets modern web browsers for presentation.
+- [Matplotlib](https://matplotlib.org/)
+- [Seaborn](https://seaborn.pydata.org/)
+- [Plotly](https://plotly.com/python)
+- [altair](https://altair-viz.github.io/)
+- [Plotnine](https://plotnine.readthedocs.io/en/stable/)
+- [Bokeh](https://bokeh.org/)
   - https://towardsdatascience.com/beautiful-and-easy-plotting-in-python-pandas-bokeh-afa92d792167
-- [SweetViz](https://github.com/fbdesignpro/sweetviz) - an open-source Python library that generates beautiful, high-density visualizations to kickstart EDA (Exploratory Data Analysis) with a single line of code.
-- [Folium](https://python-visualization.github.io/folium/) - a Python library for visualizing geospatial data.
+- [SweetViz](https://github.com/fbdesignpro/sweetviz)
+- [Folium](https://python-visualization.github.io/folium/)
 
 ## Motivation
 * There's a distinction between Exploratory vs Explanatory Data Analysis:
@@ -54,5 +54,3 @@ In addition to this week's assignment on visualizing data, I recommend you to go
 
 - The following [Visual Reference](https://www.sqlbi.com/wp-content/uploads/visuals-reference-sep2018-A3.pdf) is a great resource to help you choose a visualization.
 - Also, this is [](https://www.data-to-viz.com/) is a great resource to help you choose a visualization.
-
-https://courses.helsinki.fi/sites/default/files/course-material/4509270/IntroDS-03.pdf

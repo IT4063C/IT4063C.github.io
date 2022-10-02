@@ -28,3 +28,11 @@ the main steps:
   - Classification
   - Correlation vs Causality
   - Hypothesis Testing
+
+
+
+https://courses.helsinki.fi/sites/default/files/course-material/4509270/IntroDS-03.pdf
+
+https://share.mindmanager.com/#publish/LNTmuYzLEKtQcVbSd1XU18immd4PsYbm20tlmSlj
+
+https://plotnine.readthedocs.io/en/stable/
