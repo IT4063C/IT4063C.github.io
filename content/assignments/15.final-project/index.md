@@ -25,14 +25,14 @@ draft: true
    - Create a metric
 
 ## Important Deadlines:
-  *9/25/2022* - Checkpoint 1 is due
-  *10/2/2022* - Checkpoint 1 Peer Review is due
-  *10/16/2022* - Checkpoint 2 is due
-  *10/23/2022* - Checkpoint 2 Peer Review is due
-  *11/6/2022* - Checkpoint 3 is due
-  *11/13/2022* - Checkpoint 3 Peer Review is due
-  *12/4/2022* - Final Project is due
-  *12/7/2022* - Final Project Peer Review is due
+  - **Week 5**: *9/25/2022* - Checkpoint 1 is due
+  - **Week 6**: *10/2/2022* - Checkpoint 1 Peer Review is due
+  - **Week 8**: *10/16/2022* - Checkpoint 2 is due
+  - **Week 9**: *10/23/2022* - Checkpoint 2 Peer Review is due
+  - **Week 11**: *11/6/2022* - Checkpoint 3 is due
+  - **Week 12**: *11/13/2022* - Checkpoint 3 Peer Review is due
+  - **Week 14**: *12/4/2022* - Final Project is due
+  - **Week 14**: *12/7/2022* - Final Project Peer Review is due
 
 
 
