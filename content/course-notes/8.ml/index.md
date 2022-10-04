@@ -36,3 +36,17 @@ https://courses.helsinki.fi/sites/default/files/course-material/4509270/IntroDS-
 https://share.mindmanager.com/#publish/LNTmuYzLEKtQcVbSd1XU18immd4PsYbm20tlmSlj
 
 https://plotnine.readthedocs.io/en/stable/
+
+What is machine learning?
+
+Machine Learning Applications?
+
+Types of Machine Learning?
+
+How will the previous modules fit together
+
+Chapter 2 of the Hands-on ML
+
+GDP per capita vs Life Satisfaction - Linear Regression
+
+https://ourworldindata.org/grapher/gdp-vs-happiness?time=2020
