@@ -47,7 +47,9 @@ But before we do any of that, we need to start with a tidy data. and that will b
 
 ## Tidy Data and Data structures
 
-> "Happy families are all alike; every unhappy family is unhappy in its own way" - Leo Tolstoy
+> Happy families are all alike; every unhappy family is unhappy in its own way
+> 
+> _Leo Tolstoy_
 
 That's how Leo Tolstoy started his Anna Karenina Novel. So how does it relate to us here in data analysis?
 
