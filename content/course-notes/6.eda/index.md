@@ -1,7 +1,7 @@
 ---
 title: Exploratory Data Analysis (EDA)
 sidebar_position: 1
-draft: true
+draft: false
 ---
 
 
@@ -1882,7 +1882,6 @@ So what is correlation? Correlation is a statistical measure that indicates the 
 and as with everything in data science and data analysis, domain knowledge is needed to understand the results and not come up with bad conclusions.
 - ![How I met your mother - Driving Gloves](https://i.gifer.com/MmOU.gif)
 
-Let me show you a few examples of how you could do that.
 
 
 ```python
