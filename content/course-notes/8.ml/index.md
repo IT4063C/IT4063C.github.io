@@ -75,12 +75,59 @@ The list will go on and on and it will keep growing as we keep discovering new a
 Because there are way too many applications of machine learning and way to many algorithms to cover in this course, we will only focus on a few of those, however, it is important to introduce some classifications we will focus on the most important ones, and the ones that are most commonly used in the industry.
 
 ## Types of ML Systems:
-Learning, is very wide domain. and so machine learning has also branched out into many different subfields and subdomains.
-1. Supervision Types:
-  - Supervised Learning
-  - Unsupervised Learning
-  - Reinforcement Learning
-2. Batch vs. Online Learning:
+Learning, even for humans, is very wide domain, and has different types and styles, and so it is for machine learning as well. It also branched out into many different subfields and subdomains. While we will not cover all of them, we will cover some of the most commonly used ones. But it would be important to get a top view of the different types of machine learning systems.
+
+Three are different ways to classify machine learning systems, or to distinguish between them, like:
+- Whether or not they are trained with human supervision (supervised, unsupervised, semisupervised, and reinforcement learning).
+- weather or not they can learn incrementally on the fly (online versus batch learning).
+- weather or not they work by simply comparing new data points to known data points, or instead detect patterns in the training data and build a predictive model, much like humans do (instance-based versus model-based learning).
+
+I will only talk about the first one, the other two may be covered as they arise in the rest of the course.
+
+**whether it is trained with human supervision or not. and I'll explain that in a minute.**
+  - **Supervised Learning**
+    - for supervised learning, the training data you feed to the algorithm includes the desired solutions, called labels. as in you provide a lot of data that has the correct answer, and the algorithm learns from that data to find the patterns and the rules that would allow it to predict the correct answer for new unlabeled data.
+    - if you're building a classifier, that to differentiate between, cats, rabbits, dogs, and tigers, you need to get a lot of examples of each of those, and you need to label them, and then you feed that data to the algorithm, and it will learn from that data to be able to classify new images of cats, rabbits, dogs, and tigers.
+    - These labels you provide to the algorithm are called **_supervision signals_**.
+    - IT's not just for classification algorithms. It can also be used in regression algorithms, where you want to predict a value, like the price of a house, given a set of features about that house, like the number of rooms, the location, the size, ...etc. you get a lot of data about houses, and you label them with their prices, and then you feed that data to the algorithm, and it will learn from that data to be able to predict the price of a new house, given its features.
+
+    - Examples:
+      - k-Nearest Neighbors
+      - Linear Regression
+      - Logistic Regression
+      - Support Vector Machines (SVMs)
+      - Decision Trees and Random Forests
+      - Neural networks2
+
+  - **Unsupervised Learning**
+    - so what is unsupervised? it's the opposite of supervised. in unsupervised learning, the training data you feed to the algorithm does not include the desired solutions, called labels. as in you provide a lot of data that does not have the correct answer, and the algorithm learns from that data to find the patterns and the rules that would allow it to detect the structure of the data, and group the data into clusters.
+    - Similar to classification but here we would call it clustering. The algorithms finds patterns and groups the data accordingly.
+    - For examples, if you want to segment your customers based on their purchasing patterns, you would feed the algorithm with a lot of data about your customers, and it will find patterns and group them into clusters. maybe those clusters are based on some demographic and interests. and then you can use that information to create targeted marketing campaigns. or provide recommendations. People who purchased this product also purchased this product. People who took this course also took this course. (That would be cool)
+    - Examples:
+      - Clustering
+        - k-Means
+        - Hierarchical Cluster Analysis (HCA)
+        - Expectation Maximization
+      - Visualization and dimensionality reduction
+        - Principal Component Analysis (PCA)
+        - Kernel PCA
+        - Locally-Linear Embedding (LLE)
+        - t-distributed Stochastic Neighbor Embedding (t-SNE)
+      - Association rule learning
+        - Apriori
+        - Eclat
+
+   - **Semi-supervised Learning**
+    - This is kind of a hybrid of supervised and unsupervised learning., where you have a lot of unlabeled data, and a little bit of labeled data. and the algorithm can learn from both. This is when you have your phone labeling your photos with who's who. and you have a lot of unlabeled photos, and you have a few labeled photos. and the algorithm can use both to create clusters and classification of the data.
+    - Examples:
+      - Deep Belief Networks
+      - Restricted Boltzmann Machines
+
+  - **Reinforcement Learning**
+    - Reinforcement Learning is a very different beast. The learning system, called an agent in this context, can observe the environment, select and perform actions, and get rewards in return (or penalties in the form of negative rewards, as shown in Figure 1-12). It must then learn by itself what is the best strategy, called a policy, to get the most reward over time. A policy defines what action the agent should choose when it is in a given situation.
+    - For example, many robots implement Reinforcement Learning algorithms to learn how to walk. DeepMind’s AlphaGo program is also a good example of Reinforcement Learning: it made the headlines in May 2017 when it beat the world champion Ke Jie at the game of Go. It learned its winning policy by analyzing millions of games, and then playing many games against itself. Note that learning was turned off during the games against the champion; AlphaGo was just applying the policy it had learned.
+
+1. Batch vs. Online Learning:
   - Batch Learning
   - Online Learning
 3. Instance-Based vs Model-Based Learning
@@ -89,6 +136,41 @@ Learning, is very wide domain. and so machine learning has also branched out int
 
 
 ## Challenges of ML
+
+### Irrelevant Features
+Garbage In, Garbage out. If you feed the algorithm with irrelevant features, it will learn irrelevant patterns and will not be able to generalize well. So it's important to make sure that the features you feed the algorithm with are relevant to the task you want it to perform. otherwise you start introducing noise into the system.
+
+There's a whole area of machine learning called feature engineering, which is about selecting the right features, extracting features from the data, or creating new features from existing ones. You may cover some of that as we start building our models. augementation, ...etc.
+
+### Overfitting the Training Data
+Overfitting is when the machine learning model is trained to fit exactly the training data including the noise in the data, and so it will not be able to generalize the underlying information well to new data. The model in this scenario Overfitting occurs when your model learns too much from training data and isn’t able to generalize the underlying information, or when you have a lot of features in your data, and you don't have a lot of data to be able to train your model to detect all the patterns and relationships between the different features and come up with a generalized state.
+
+A fun examples is presidential elections and statements like No party candidate has won the election without state X, or no president were elected under those circumstances. There's only been 56 presidential elections and 44 presidents. That's not a lot od data to train a model on, especially if we expand the features to include things like the scrabble point value of names. It's easy for the model to overfit the data and make predictions that are not accurate.
+![overfitting-presidential-candidates](https://imgs.xkcd.com/comics/electoral_precedent.png)
+
+Another example of overfitting is the following diagram. If you have this relationship between 2 different features. you can come up with a model that will fit the data perfectly, but if you try to use it get a prediction, you'll get a very off prediction.
+
+This could also occur when you have a lot of data but this data is biased.
+
+For example, if we're training a model to differentiate between, cats, rabbits, dogs, and tigers. 
+The training data has 1000 cats, 1000 dogs, 1000 tigers, and 4000 Rabbits. Then there is a considerable probability that it will identify the cat as a rabbit. In this example, we had a vast amount of data, but it was biased or Nonrepresentative of the population.
+
+We can tackle this issue by:
+- Choosing the right algorithm and the right models.
+- use data augmentation techniques to increase the size of the training data. and we may talk about that later on in the class.
+- Remove the noise in the data, whether the noise here is the irrelevant features or the irrelevant or outlier data points.
+
+https://towardsdatascience.com/an-example-of-overfitting-and-how-to-avoid-it-f6739e67f394
+https://www.ibm.com/cloud/learn/overfitting
+
+
+### Underfitting the Training Data
+The opposite of overfitting is underfitting. Underfitting is when the model is not complex enough to fit the data, and so it will not be able to generalize the underlying information well to new data. TIn overfitting the model was too complex and learning everything from the data including the noise. In underfitting, the model is not complex enough to capture the underlying trends and information in the data.
+
+This can also be caused by lack of data or features, can be caused by biased data, or like we said a bad model, or an overly simple model. What we mean by simple and complex here the degree of the polynomial here. 
+
+This is a constant or monomial model or funciton, this is a linear model, this is a quadratic model, this is a cubic model, and this is a quartic model. And so as you can see, the more complex the model, the more fluctuation in the model there is it will fit the data, and the more it will be able to generalize the underlying information to new data.
+
 ### Insufficient Quantity of Training Data
 The most important task a machine learning algorithm goes through is getting trained on the data. and so the more data you have, the better the algorithm will be. and so if you don't have enough data, you will end up with biased output or inaccurate predictions, or classifications or whatever it is you want to do.
 
@@ -97,12 +179,8 @@ However one factor that is the number of features in your data. and so if you ha
 
 If we're building a prediction algorithm that will predict a house price based on location only, you would need less data then if you're predicting based on location, number of rooms, proximity to certain places, and so one. You need to have enough data for the algorithms to weight in the effect of each factor on the target value.
 
-### Irrelevant Features
+In a number of research papers, it was actually found that even with poor algorithms and models, you can get good results if you have enough data. and so it's not always about the algorithm. It is also about the data.
 
-### Nonrepresentative Training Data
-
-### Overfitting the Training Data
-### Underfitting the Training Data
 
 ## Hands-on ML
 
