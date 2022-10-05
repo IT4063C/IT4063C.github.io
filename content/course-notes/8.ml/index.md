@@ -89,12 +89,20 @@ Learning, is very wide domain. and so machine learning has also branched out int
 
 
 ## Challenges of ML
-1. Insufficient Quantity of Training Data
-2. Nonrepresentative Training Data
-3. Poor-Quality Data
-4. Irrelevant Features
-5. Overfitting the Training Data
-6. Underfitting the Training Data
+### Insufficient Quantity of Training Data
+The most important task a machine learning algorithm goes through is getting trained on the data. and so the more data you have, the better the algorithm will be. and so if you don't have enough data, you will end up with biased output or inaccurate predictions, or classifications or whatever it is you want to do.
+
+The quantity of data is a relative, and it depends on the complexity of the problem you're trying to solve. and so it's not always easy to know how much data you need. and so you need to experiment with different amounts of data and see how it affects the performance of your algorithm.
+However one factor that is the number of features in your data. and so if you have a lot of features, you need to have a lot of data to be able to train your algorithm to detect all the patterns and relationships between the different features.
+
+If we're building a prediction algorithm that will predict a house price based on location only, you would need less data then if you're predicting based on location, number of rooms, proximity to certain places, and so one. You need to have enough data for the algorithms to weight in the effect of each factor on the target value.
+
+### Irrelevant Features
+
+### Nonrepresentative Training Data
+
+### Overfitting the Training Data
+### Underfitting the Training Data
 
 ## Hands-on ML
 
