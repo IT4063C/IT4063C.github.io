@@ -1,7 +1,7 @@
 ---
 title: Final Project
 sidebar_label: Overview
-sidebar_position: 15
+sidebar_position: 1
 draft: true
 ---
 
