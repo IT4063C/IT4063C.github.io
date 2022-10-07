@@ -20,7 +20,7 @@ Machine learning is the science of getting computers to act without being explic
 > 
 > _Tom M. Mitchell_
 
-- **Experience E**: What the machine learns from; The data we feed to the algorithm in conjunction with the algorithm's actions on that data
+- **Experience E**: What the machine learns from; The data we feed to the algorithm.
 - **Tasks T**: What machine learns for; The tasks the algorithm is supposed to perform.
   - OCR, image classification, spam detection, Medical Diagnosis by analyzing patient data and finding patterns, ...etc.
 - **Performance measure P**: How well the machine learns; The measure of the algorithm's performance and accuracy.
@@ -29,7 +29,7 @@ Machine learning is the science of getting computers to act without being explic
 xxx
 If we take filtering spam emails as an example, we can define the following:
 - **Tasks T**: Filtering the spam emails.
-- **Experience E**: the emails we feed to the algorithm and whether users have flagged them as spam, in conjunction with the algorithm's actions on that data
+- **Experience E**: the labelled emails from users; whether the email is spam or not.
 - **Performance measure P**: the ratio of emails that are correctly classified as spam or not spam.
 xxx
 
@@ -133,6 +133,9 @@ I will only talk about the first one, the other two may be covered as they arise
 3. Instance-Based vs Model-Based Learning
   - Instance-Based Learning
   - Model-Based Learning  
+
+
+<!-- TODO: Explain what regression, classification, and clustering are -->
 
 
 ## Challenges of ML
