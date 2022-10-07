@@ -51,18 +51,20 @@ You will be handling issues such as:
 You will need to describe the data cleaning process you went through to prepare your data for analysis. This includes your code and the reasoning behind your decisions (if not already disucssed in the EDA section).
 
 ### 3. Machine Learning Plan
-In this section, you'll plan how you can apply machine learning to your project. You're not required to actually implement machine learning in this checkpoint, but this checkpoint will help identify issues that you may encounter when you do implement machine learning, or issues with your current datasets that will need to be addressed before you can implement machine learning.
+In this section, you'll plan how you can apply machine learning to your project. You're not expected to actually implement machine learning in this checkpoint, but this checkpoint will help identify issues that you may encounter due to not having enough data, or not enough features, or too many features, ...etc.
 
 :::info 🦉 Advise 
 Take your findings from this checkpoint to start preparing for next checkpoints. You will be implementing machine learning in the next checkpoint.
 :::
 
-  - Based on your problem domain, what type of machine learning will you need for your project?
-  - Based on the challenges of machine learning we discussed, what challenges are you expecting to face, and how are you planning to address it?
+Use this section to address the following questions:
+- What type of machine learning model are you planning to use?
+- What are the challenges have you identified/are you anticipating in building your machine learning model?
+- How are you planning to address these challenges?
 
 ### 4. Prior Feedback and Updates
-  - What feedback did you receive from your peers and/or the teaching team?
-  - What changes have you made to your project based on this feedback?
+- What feedback did you receive from your peers and/or the teaching team?
+- What changes have you made to your project based on this feedback?
 
 
 ## Due Dates
@@ -71,9 +73,23 @@ Take your findings from this checkpoint to start preparing for next checkpoints.
 
 ## Submission
 
-You'll also be required to provide a peer review of **one** of your fellow classmates' work. You'll have access to their submission and will need to provide thoughtful feedback. Your feedback isn't limited to the project idea and design but also to the coding practices followed. The assignment resources include links to the Warm-Cool-Hard Feedback protocol and the clean code practices document on the course's website. You're encouraged to draw on your own personal and industrial experience in your feedback.
+### 1. Your Notebook
+You'll be submitting the same GitHub Repository Link you submitted for Checkpoint #1. You should Add the the sections mentioend above in that notebook.
 
-**You will be submitting the same GitHub Repository Link you submitted for Checkpoint 1.**
+- Make sure you keep the current last cell in your notebook as the last cell
+```python
+!jupyter nbconvert --to python source.ipynb
+```
+- Run that cell again, to convert your notebook to a Python Script. This is the file your peers will be submitting the review on. They can still see the notebook to see the visualization. But that one will make it easier to provide the feedback on.
+
+### 2. Peer-Review
+You'll also be required to provide a peer review of **one** of your fellow classmates' work. You'll have access to their submission and will need to provide thoughtful feedback. Your feedback isn't limited to the project idea and design but also to the coding practices followed.
+Please provide your feedback on the **Feedback Pull Request** on their GitHub repository. Same as what I did on your Python Exercises Assignment.
+
+Every notebook should have an accompanying Python Script with the same name, except that it ends with `*.py` instead of `*.ipynb`. This is the file that you'll be reviewing. You should still review the notebook itself to be able to see the visualization and the output of the code.
+
+The assignment resources include links to the Warm-Cool-Hard Feedback protocol and the clean code practices document on the course's website. You're encouraged to draw on your own personal and industrial experience in your feedback.
+
 
 **Please check the rubric for details on how you'll be graded on this assignment.**
 
