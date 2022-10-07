@@ -20,10 +20,10 @@ Machine learning is the science of getting computers to act without being explic
 > 
 > _Tom M. Mitchell_
 
-- **Experience E**: the data we feed to the algorithm in conjunction with the algorithm's actions on that data
-- **Tasks T**: the tasks the algorithm is supposed to perform.
+- **Experience E**: What the machine learns from; The data we feed to the algorithm in conjunction with the algorithm's actions on that data
+- **Tasks T**: What machine learns for; The tasks the algorithm is supposed to perform.
   - OCR, image classification, spam detection, Medical Diagnosis by analyzing patient data and finding patterns, ...etc.
-- **Performance measure P**: the measure of the algorithm's performance and accuracy.
+- **Performance measure P**: How well the machine learns; The measure of the algorithm's performance and accuracy.
   - Accuracy, Precision, Recall, F1-Score, ...etc.
 
 xxx
