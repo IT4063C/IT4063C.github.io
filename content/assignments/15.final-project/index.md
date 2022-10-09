@@ -1,8 +1,8 @@
 ---
-title: Final Project
+title: Final Project (wip)
 sidebar_label: Overview
 sidebar_position: 1
-draft: true
+draft: false
 ---
 
 ## Introduction
@@ -49,6 +49,7 @@ The project is worth 38% of your final grade.
     - You should be able to demonstrate your ability to create static data visualizations.
     - You should be able to demonstrate your ability to create interactive data visualizations.
     - The project should contain at least 6 visualizations (more as the project requires).
+  - You should be able to demonstrate your ability to create machine learning models that supports your project.
 
 ### Structure and Presentation
   - The project should be structured as a Jupyter Notebook.
@@ -72,6 +73,6 @@ The project is worth 38% of your final grade.
 **Let's start 🏁**
 
 
-## Rubrics
+<!-- ## Rubrics -->
 <!-- ![Part1](images/rubrics1.png)
 ![Part2](images/rubrics2.png) -->
