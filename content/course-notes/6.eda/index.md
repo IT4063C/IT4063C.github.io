@@ -1625,7 +1625,7 @@ auto_mpg_df.drop(auto_mpg_df[(auto_mpg_df['displacement'] < lower_bound) | (auto
 ```
 
 ## About Statistical Analysis
-- [Statistics Cheatsheet](./statistics-cheat-sheet.pdf)
+- [Statistics Cheatsheet](./assets/statistics-cheat-sheet.pdf)
 
 In this video we lightly touched on so many topics. 
 
