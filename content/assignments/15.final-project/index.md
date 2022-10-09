@@ -20,7 +20,7 @@ The project is worth 38% of your final grade.
 ### General guidelines
   - You are expected to work on this project individually.
   - Your project idea may change and pivot as you work on it and as we learn more about different topics in class. This is expected and encouraged. Make sure you document your progress and changes.
-  - You should adhere to clean code practices and good software engineering principles. Including [](/guide/code-style)
+  - You should adhere to clean code practices and good software engineering principles. Including [The course's Code Style Guidelines](/guides/code-style)
   <!-- - You are expected to work on this project outside of class time. -->
 
 ### Topic
