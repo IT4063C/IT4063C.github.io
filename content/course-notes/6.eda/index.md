@@ -1428,11 +1428,9 @@ plt.show()
 
 <CodeOutputBlock lang="python">
 
-```
     
 ![png](_index_files/output_35_0.png)
     
-```
 
 </CodeOutputBlock>
 
@@ -1478,11 +1476,9 @@ plt.show()
 
 <CodeOutputBlock lang="python">
 
-```
     
 ![png](_index_files/output_39_0.png)
     
-```
 
 </CodeOutputBlock>
 
@@ -1502,14 +1498,10 @@ auto_mpg_df['displacement'].plot(kind="box")
 
 ```
     <AxesSubplot: >
-
-
-
-
-    
+```
+ 
 ![png](_index_files/output_41_1.png)
     
-```
 
 </CodeOutputBlock>
 
@@ -1859,6 +1851,7 @@ ax13.set_title("dino_df")
 
 ```
     Text(0.5, 1.0, 'dino_df')
+```
 
 
 
@@ -1866,7 +1859,6 @@ ax13.set_title("dino_df")
     
 ![png](_index_files/output_51_1.png)
     
-```
 
 </CodeOutputBlock>
 
@@ -2074,6 +2066,7 @@ scatter_matrix(auto_mpg_df[attributes], figsize=(12, 8))
             <AxesSubplot: xlabel='horsepower', ylabel='cylinders'>,
             <AxesSubplot: xlabel='cylinders', ylabel='cylinders'>]],
           dtype=object)
+```
 
 
 
@@ -2081,7 +2074,6 @@ scatter_matrix(auto_mpg_df[attributes], figsize=(12, 8))
     
 ![png](_index_files/output_57_1.png)
     
-```
 
 </CodeOutputBlock>
 
