@@ -25,6 +25,7 @@ google-api-python-client = "*"
 youtube-transcript-api = "*"
 seaborn = "*"
 scipy = "*"
+scikit-learn = "*"
 
 [dev-packages]
 
