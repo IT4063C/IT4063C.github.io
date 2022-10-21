@@ -53,24 +53,67 @@ display(df)
 reg = linear_model.LinearRegression()
 reg.fit(df[["x1", "x2"]], df['y']).coef_
 ```
+    
+<HTMLOutputBlock >
 
-<CodeOutputBlock lang="python">
 
+```html
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x1</th>
+      <th>x2</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 ```
-    ---------------------------------------------------------------------------
-
-    ModuleNotFoundError                       Traceback (most recent call last)
-
-    Cell In [1], line 1
-    ----> 1 from sklearn import linear_model
-          2 import pandas as pd
-          4 X = [[0, 0], [1, 1], [2, 2]]
 
 
-    ModuleNotFoundError: No module named 'sklearn'
-```
 
-</CodeOutputBlock>
+
+
+    array([0.5, 0.5])
+
+
+
+</HTMLOutputBlock>
 
 
 ```python
@@ -635,14 +678,17 @@ df = pd.DataFrame({'x': x, 'y': y})
 
 # Scatter plot of the dots
 f, ax = plt.subplots(figsize=(5,5))
-ax.scatter(df['x'], df['y'])
+ax.scatter(df['x'], df['y'], s=60)
 
 # Plot an arbitrary line
 x = np.linspace(0, 4, 11)
 y_bad = 2.2+ -x
-y_good = 0.6*x + 0.5
-ax.plot(x,y_bad, label=f'y=2.25 - bad')
-ax.plot(x,y_good, label=f'y=2.25 - good')
+y_good = x + 0.5
+y_better = 0.55789474*x + 0.92105263
+ax.plot(x,y_bad, label=f'bad: y=2.2 - x', color='red')
+ax.plot(x,y_good, label=f'good: y=0.5 + x', color='orange')
+ax.plot(x,y_better, label=f'better: y= 0.92 + 0.558 x', color='green')
+ax.legend(loc='best')
 
 ax.grid(alpha=0.2)
 plt.show()
@@ -658,99 +704,36 @@ plt.show()
 
 </CodeOutputBlock>
 
-We also know that value of m or the slope is the change in y divided by the change in x. and the value of b is the y-intercept.
+You probably remember that to calculate the line slope, it was the change in y divided by the change in x.
+so we were always able to draw a line by knowing 2 points on the line.
 $$y = \frac{y_{2} - y_{1}}{x_{2} - x_{1}}x + b$$
 
-## Simple Linear Regression - Drawing lines and performance measure
-In this video, we'll talk about simple linear regression, which is a special case of multiple linear regression, where we're using a single feature to predict a single value.
-As we've mentioned before, the goal here is find the best fitting line that describes the relationship between the features and the target.
+this always got us the perfect line, but in real life, we don't have the perfect data. we have noisy data, and we need to find the best line that fits the data we have. we just don't have 2 lines that we can connect.
 
-Here obviously, this line better describes the relationship than this line.
-![linear regression: good and bad](./assets/linear-good-bad.png)
+ok the next best thing is to eyeball it. While we can eyeball it in 2D, it's not easy to eyeball it in 3D. and impossible to eyeball in 4D or more. Plus we need an objective way to measure how good the line is. and that's where the cost function or performance measures comes in.
 
-but how do we find that line? from Algebra, we know that the formula for a line is:
+Now there are many different performance measures, the most common of which is that we get the mean of the squared errors or the squared residuals. 
 
-$$y = mx + c$$
+What does that mean? it means that we take the difference between the actual value and the predicted value, and we square it (so we can lose the negative sign). and we do that for every data point, and we get the mean of all those values.
 
-where:
-- m: slope
-- c: y-intercept
+$$MSE = \frac{1}{m}\sum_{i=1}^{m}(y_{i} - \hat{y_{i}})^{2}$$
 
+The smaller the cost function, the better the model. so we want to find the model, we want to find the line or the surface that minimizes the mean squared error value.
+
+Let's see an example here. using this same data here.
 
 
 
 ```python
-import matplotlib.pyplot as plt
-import numpy as np
-
-x = np.linspace(-5, 5, 11)
-def plot_line(y, color):
-  y_ = eval(y)
-  plt.plot(x, y_, label=f'y={y}', marker='o', markersize=5, color=color)
-  plt.legend(loc='best')
-  plt.xlabel('x')
-  plt.ylabel('y')
-```
-
-
-```python
-plot_line(y='x', color='red')
-plot_line(y='3*x+5', color='blue')
-# plot_line(y='0.5*x+4', color='green')
-# plot_line(y='2*x', color='purple')
-
-plt.grid()
-plt.show()
-```
-
-<CodeOutputBlock lang="python">
-
-```
-    
-![png](_transcript_files/output_31_0.png)
-    
-```
-
-</CodeOutputBlock>
-
-and we can adjust the slope and the y-intercept to draw any line you want.
-
-and you may remember how you can find a line that passes through 2 points, using the following formula:
-
-$$y = \frac{y_{2} - y_{1}}{x_{2} - x_{1}}x + b$$
-
-where:
-- b: y-intercept
-- the fraction is the slope
-
-but for this dataset, we can't just arbitrarily choose 2 points to draw a line. It may be close enough, but it wouldn't be the best fit line. 
-Actually, how would you know that what you have is a good fit? For that we need to define a performance measure, or a cost function, that will allow us to evaluate the model's performance.
-
-Now there are many different performance measures, the most common of which is that we get the mean of the squared errors or residuals. 
-What does that mean? well, we take the difference between the actual value and the predicted value, and we square it (so that we lose the negative sign). and we do that for all the data points, and we get the mean of those squared errors.
-
-$$\frac{1}{m}\sum_{i=1}^{m}(y_{i} - \hat{y_{i}})^{2}$$
-
-
-Obviously, the smaller the mean of the squared errors, the better the model is. So we want to find the line that minimizes the mean of the squared errors.
-
-Let's see an example here.
-
-
-
-
-```python
-# a pandas dataframe with 2 columns: x and y
 import pandas as pd
-import numpy as np
 
-x = [1, 1.5,2.5,3,4]
-y = [1, 2.3,2.1,3,2.9]
+x = [1, 1.5, 2.5, 3, 4]
+y = [1, 2.3, 2.1, 3, 2.9]
 
 df = pd.DataFrame({'x': x, 'y': y})
 ```
 
-The easiest way to do this, is to draw a line, any line, and then calculate the distance between the line and the data points. Then, we square the distance, and we sum all the squared distances, and then we take the square root of the sum. We call this the loss function, or the cost function. and we want to minimize this function.
+we'll just start with a random line, any line, 
 
 
 ```python
@@ -774,11 +757,13 @@ plt.show()
 
 ```
     
-![png](_transcript_files/output_35_0.png)
+![png](_transcript_files/output_31_0.png)
     
 ```
 
 </CodeOutputBlock>
+
+and then calculate the distance between the line and the data points.
 
 
 ```python
@@ -814,11 +799,13 @@ plt.show()
 
 ```
     
-![png](_transcript_files/output_36_0.png)
+![png](_transcript_files/output_33_0.png)
     
 ```
 
 </CodeOutputBlock>
+
+Then, we square the distance, and we sum all the squared distances, 
 
 
 ```python
@@ -843,7 +830,54 @@ ax.text(3.1, 2.4, '0.64')
 ax.plot([4,4],[2.9, 2.2], color='red', linestyle='dotted', alpha=0.5)
 ax.text(4.1, 2.6, '0.49')
 
-ax.text(2.5, 1.5, '∑ = 2.59', fontsize=20, color='red')
+ax.text(2, 1.5, '∑ = 2.59\nmean = 0.518', fontsize=20, color='red')
+
+ax.grid(alpha=0.2)
+plt.show()
+```
+
+<CodeOutputBlock lang="python">
+
+```
+    
+![png](_transcript_files/output_35_0.png)
+    
+```
+
+</CodeOutputBlock>
+
+$$MSE = \frac{1}{m}\sum_{i=1}^{m}(y_{i} - \hat{y_{i}})^{2}$$
+We call this the loss function, or the cost function. and we want to minimize this function.
+
+Then we change the parameters $\Theta$ , and we calculate the loss function again, and we repeat this process until we get the minimum value.
+
+note here, this is the Theta matrix, as in all the parameters. so we're changing all the parameters at the same time.
+
+
+
+```python
+# plot the data
+import matplotlib.pyplot as plt
+
+f, ax = plt.subplots(figsize=(5,5))
+ax.scatter(df['x'], df['y'])
+
+x = np.linspace(0, 4, 11)
+y = x + 0.5
+ax.plot(x,y, label=f'y=0.5 + x')
+
+ax.plot([1,1],[1, 1.5], color='red', linestyle='dotted', alpha=0.5)
+ax.text(1.1, 1.5, '0.25')
+ax.plot([1.5,1.5],[2.3, 2], color='red', linestyle='dotted', alpha=0.5)
+ax.text(1.6, 2.25, '0.09')
+ax.plot([2.5,2.5],[2.1, 3], color='red', linestyle='dotted', alpha=0.5)
+ax.text(2.6, 2.12, '0.81')
+ax.plot([3,3],[3, 3.5], color='red', linestyle='dotted', alpha=0.5)
+ax.text(3.1, 2.4, '0.25')
+ax.plot([4,4],[2.9, 4.5], color='red', linestyle='dotted', alpha=0.5)
+ax.text(4.1, 2.6, '2.56')
+
+ax.text(1.5, .5, '∑ = 3.96\nmean= 0.792', fontsize=20, color='red')
 
 ax.grid(alpha=0.2)
 plt.show()
@@ -859,24 +893,62 @@ plt.show()
 
 </CodeOutputBlock>
 
+and again
+
+
+```python
+# plot the data
+import matplotlib.pyplot as plt
+
+f, ax = plt.subplots(figsize=(5,5))
+ax.scatter(df['x'], df['y'])
+
+x = np.linspace(0, 4, 11)
+y = 0.588*x + 0.92
+ax.plot(x,y, label=f'y= 0.92 + 0.558x')
+
+ax.plot([1,1],[1, 1.508], color='red', linestyle='dotted', alpha=0.5)
+ax.text(1.1, 1.5, '0.258')
+ax.plot([1.5,1.5],[2.3, 1.802], color='red', linestyle='dotted', alpha=0.5)
+ax.text(1.6, 2.25, '0.248004')
+ax.plot([2.5,2.5],[2.1, 2.39], color='red', linestyle='dotted', alpha=0.5)
+ax.text(2.6, 2.12, '0.0841')
+ax.plot([3,3],[3, 2.684], color='red', linestyle='dotted', alpha=0.5)
+ax.text(3.1, 2.4, '0.099856')
+ax.plot([4,4],[2.9, 3.272], color='red', linestyle='dotted', alpha=0.5)
+ax.text(4.1, 2.6, '0.138384')
+
+ax.text(1.5, 1, '∑ = 0.828444\nmean= 0.1656688', fontsize=20, color='red')
+
+ax.grid(alpha=0.2)
+plt.show()
+```
+
+<CodeOutputBlock lang="python">
+
+```
+    
+![png](_transcript_files/output_39_0.png)
+    
+```
+
+</CodeOutputBlock>
+
+
 so again:
 - measure error
 - Square it
 - sum it
 
+you could actually create a 3D plot of the loss function, and you can see that the loss function is a bowl shape, and the minimum value is the bottom of the bowl.
+for every $\theta_{0}$ and $\theta_{1}$, there's a value for the loss function.
 
-Then we change the parameters, change the line, and you calculate the loss function again, and you keep doing this until you find the line that minimizes the loss function.
+<img alt="cost function" src="./assets/Surface-Plot-of-a-Two-Dimensional-Objective-Function.webp" width=600 />
 
-![loss function](./assets/loss.png)
+ok but so far, we're updating those numbers randomly and manually. There's nothing automatic about it. so how do we automate this process?
+how can we make sure we're updating the parameters in the right direction? the direction that will minimize the loss function?
 
-
-so far so good, but how do we get this minimum in the loss?
-
-we use a formula called gradient descent. this function is used in many machine learning algorithms, not just linear regression. in a following optional video, I will talk about that.
-
-This process here for simple linear regression is exactly the same as the process for multiple linear regression, except that we have more than one feature, and we have more than one parameter.
-
-
+That is the gradient descent algorithm.
 
 ## Gradient Descent
 In this video, we'll talk about gradient descent, which is a very important algorithm in machine learning. It's used in many machine learning algorithms, not just linear regression.
@@ -896,9 +968,13 @@ I think going over the math behind this formula is a bit out of scope for this c
 
 anyway every coefficient is updated simultaneously, so you don't update one coefficient, and then update the other coefficient, and then update the other coefficient, and so on. you update all the coefficients simultaneously.
 
-everytime you update the coefficients, you calculate the cost function, and calculate the gradient, and you move in the direction of the gradient, and you keep doing this until you reach the minimum, a point where the gradient is zero (or very close to zero). a value where the update theta values doen't change.
+everytime you update the coefficients, you calculate the cost function, and calculate the gradient, and you move in the direction of the gradient, and you keep doing this until you reach the minimum, a point where the gradient is zero (or very close to zero). a value where the update theta values doesn't change.
 
-In a way, this very simple problem seems that it'll take a lot of coding to solve it, but thankfully, a library called scikit-learn has a class called LinearRegression that does all the heavy lifting for us. We'll talk about it in the next video.
+In a way, this very simple problem seems that it'll take a lot of coding to solve it, but thankfully, a library called scikit-learn has a class called LinearRegression that does all the heavy lifting for us. 
+
+This under the hood introduction to linear regression is important because it helps you understand the results you're getting, and it helps you understand the limitations of the model. and how your data and feature engineering process could affect the results you're getting.
+
+and we'll see later in the module.
 
 ## Linear Regression in Scikit-Learn
 Talk is cheap, let's see some code.
@@ -909,6 +985,29 @@ from sklearn.linear_model import LinearRegression
 model = LinearRegression()
 model.fit(df['x'], df['y'])
 ```
+
+
+```python
+# linear regression
+from sklearn.linear_model import LinearRegression
+
+x = np.array([1, 1.5, 2.5, 3, 4]).reshape(-1, 1)
+y = np.array([1, 2.3, 2.1, 3, 2.9]).reshape(-1, 1)
+
+# create a linear regression model
+model = LinearRegression()
+model.fit(x,y)
+
+model.coef_
+```
+
+<CodeOutputBlock lang="python">
+
+```
+    array([[0.55789474]])
+```
+
+</CodeOutputBlock>
 
 # Polynomial Regression
 polynomial regression is a special case of multiple linear regression, where we're using polynomial features instead of linear features. as in the data is usually can't be described by a straight line or a plane, but by a curve, or a curved surface.
@@ -922,6 +1021,16 @@ income2_df
 sns.scatterplot(x='Level', y='Salary', data=income2_df)
 plt.show()
 ```
+
+<CodeOutputBlock lang="python">
+
+```
+    
+![png](_transcript_files/output_45_0.png)
+    
+```
+
+</CodeOutputBlock>
 
 Obviously, this data can't be described by a straight line, but by a curve. So we can use polynomial features instead of linear features to describe this data.
 
