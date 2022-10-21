@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Regression - Transcript
+title: E2E - Transcript
 draft: true
 ---
 
