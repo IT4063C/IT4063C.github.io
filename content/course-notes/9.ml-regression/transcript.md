@@ -53,67 +53,24 @@ display(df)
 reg = linear_model.LinearRegression()
 reg.fit(df[["x1", "x2"]], df['y']).coef_
 ```
-    
-<HTMLOutputBlock >
+
+<CodeOutputBlock lang="python">
+
+```
+    ---------------------------------------------------------------------------
+
+    ModuleNotFoundError                       Traceback (most recent call last)
+
+    Cell In [1], line 1
+    ----> 1 from sklearn import linear_model
+          2 import pandas as pd
+          4 X = [[0, 0], [1, 1], [2, 2]]
 
 
-```html
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>x1</th>
-      <th>x2</th>
-      <th>y</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2</td>
-      <td>2</td>
-      <td>2</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+    ModuleNotFoundError: No module named 'sklearn'
 ```
 
-
-
-
-
-    array([0.5, 0.5])
-
-
-
-</HTMLOutputBlock>
+</CodeOutputBlock>
 
 
 ```python
@@ -272,7 +229,9 @@ This week we'll talk about one supervised learning technique and algorithm. whic
 it's a statistical tool for modeling the relationship between a dependent variable (the target) and one or more independent variables (explanatory variable).
 that is linear regression.
 
-we'll start with a simple linear regression model, then we'll talk about multiple linear regression, and finally we'll talk about polynomial regression.
+we'll start with a simple linear regression model, and learn how the same model can be applied for multiple linear regression, and finally we'll talk about polynomial regression.
+
+here's the agenda for what we'll talk about in this module:
 ## outline
 - introduction
 - notations
@@ -291,24 +250,42 @@ we'll start with a simple linear regression model, then we'll talk about multipl
 
 
 ## Module Overview
-We've talked about what machine learning is, the different problems it can help us solve, and the different types of machine learning algorithms. In this module, we'll talk about one of the supervised learning techniques, typically used for predicting numerical values. We'll start with a simple linear regression model, then we'll talk about multiple linear regression, and finally we'll talk about polynomial regression.
-These are supervised learning algorithms, which means that we'll need to provide labeled data to train the model. We'll also talk about the different performance measures that we can use to evaluate the model's performance. We'll also perform some steps of feature engineering, and practice dealing with categorical data, choosing the best features in your data.
-This is out first module where we'll be using the Scikit-Learn library. We'll learn how to use it to train our models, and how to use it to make predictions.
+We've talked about what machine learning is, the different problems it can help us solve, and the different types of machine learning algorithms. In this module, we'll talk about one of the supervised learning techniques, typically used for predicting numerical values. We'll start with a simple linear regression model, then we'll see how that model can be applied for multiple linear regression problems as well, and finally we'll talk about polynomial regression.
 
-Let's just get to it.
+Our agenda for this module is as follows:
+- Introduction: we'll introduce the problem of regression, what it means, what are the types of regression problems.
+- Notations: we'll introduce the terminology and notations we'll use throughout this module. These are notations that you'll find in most machine learning books and courses.
+- Linear Regression - how to train a model.
+  - Performance Measures and Cost Functions: this is what tells us how good our model is.
+  - Gradient Descent: this is the algorithm we'll use to train our model. it uses the information from the cost function to update your model incrementally.
+- Implement the model using scikit-learn
+- a bit on Feature Engineering
+  - how to evaluate your features
+  - how to deal with categorical features (ordinal, nominal)
+- we'll do a quick recap showing how we can build models using scikit-learn
 
-## Introduction
+Let's get started.
+
+## Introduction: What is Regression? Types?
 Linear Regression and Polynomial Regression are supervised regression algorithms.
 
 Supervised meaning we use labeled data to train the model.
 Regression meaning we predict numerical values instead of categories of classes.
 
-regression finds relationships between a target variable or the variables we're trying to predict, and one or more features or the explanatory variables we're using to predict it.
-and depending on the number of features we're using, or the model complexity, we can have simple linear regression, multiple linear regression, or polynomial regression.
+Regression models finds relationships between one or more independent variables, or explanatory variables, and some target variable or dependent variable; as it it depends on the values of your features. The target variable is the value we're trying to predict.
 
-Let's talk about one at a time.
+Depending on the shape of the model that would fit the data, we call the model either linear or polynomial. 
+If it's simple enough that we can represent it by a straight line, or a plane, a surface we call it a linear model. If it's more complex, where it needs to represented by a curved line or surface we call it a polynomial model.
 
-For example, I have this dataset that shows 30 signals or 30 observation of years of education, seniority level, and and income. Data that was collected from 30 different people.
+Keep in mind, it's not always clear from the get-go whether a model is linear or polynomial. It's something we'll have to figure out as we go along.
+You experiment with different models, and different algorithms, and you'll see which one works best for your data, or performs best on your data.
+
+For linear regression, we have a simple linear regression model, and a multiple linear regression model. The simple linear regression model is used when we have one independent variable, and the multiple linear regression model is used when we have more than one independent variable.
+We can visualize the simple linear regression model as a straight line, and the multiple linear regression model up-to 2 variables as a plane, or a surface. it's a bit more difficult to visualize the multiple linear regression model with more than 2 variables. and at the point we just trust the math and the algorithms that we were able to generalize from the 2D case to the 3D case.
+
+Just so we can start with the end in mind, here's the desired outcome of regression models.
+
+Imagine, you have this dataset that shows 30 observation of years of education, seniority level, and and income
 
 
 
@@ -317,7 +294,7 @@ For example, I have this dataset that shows 30 signals or 30 observation of year
 import pandas as pd
 
 income_df = pd.read_csv('data/income2.csv')
-income_df
+income_df.head(6)
 ```
     
 <HTMLOutputBlock >
@@ -386,150 +363,6 @@ income_df
       <td>26.206897</td>
       <td>71.504485</td>
     </tr>
-    <tr>
-      <th>6</th>
-      <td>19.931034</td>
-      <td>150.344828</td>
-      <td>87.970467</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>21.172414</td>
-      <td>82.068966</td>
-      <td>79.811030</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>20.344828</td>
-      <td>88.275862</td>
-      <td>90.006327</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>10.000000</td>
-      <td>113.103448</td>
-      <td>45.655529</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>13.724138</td>
-      <td>51.034483</td>
-      <td>31.913808</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>18.689655</td>
-      <td>144.137931</td>
-      <td>96.282997</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>11.655172</td>
-      <td>20.000000</td>
-      <td>27.982505</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>16.620690</td>
-      <td>94.482759</td>
-      <td>66.601792</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>10.000000</td>
-      <td>187.586207</td>
-      <td>41.531992</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>20.344828</td>
-      <td>94.482759</td>
-      <td>89.000701</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>14.137931</td>
-      <td>20.000000</td>
-      <td>28.816301</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>16.620690</td>
-      <td>44.827586</td>
-      <td>57.681694</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>16.620690</td>
-      <td>175.172414</td>
-      <td>70.105096</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>20.344828</td>
-      <td>187.586207</td>
-      <td>98.834012</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>18.275862</td>
-      <td>100.689655</td>
-      <td>74.704699</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>14.551724</td>
-      <td>137.931034</td>
-      <td>53.532106</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>17.448276</td>
-      <td>94.482759</td>
-      <td>72.078924</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>10.413793</td>
-      <td>32.413793</td>
-      <td>18.570665</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>21.586207</td>
-      <td>20.000000</td>
-      <td>78.805784</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>11.241379</td>
-      <td>44.827586</td>
-      <td>21.388561</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>19.931034</td>
-      <td>168.965517</td>
-      <td>90.814035</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>11.655172</td>
-      <td>57.241379</td>
-      <td>22.636163</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>12.068966</td>
-      <td>32.413793</td>
-      <td>17.613593</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>17.034483</td>
-      <td>106.896552</td>
-      <td>74.610960</td>
-    </tr>
   </tbody>
 </table>
 </div>
@@ -564,7 +397,7 @@ plt.show()
 
 It's a quite strong correlation between education and income (0.9), and a slightly weaker correlation between seniority level and income (0.52).
 
-In simple linear regression, we're trying to predict a single value, using a single feature to predict it.
+Which means we can create a single linear regression model the predicts income based on years of education. or a multiple linear regression that also includes the seniority level.
 
 let's visualize the data using a scatter plot. We can clearly see that there is a positive correlation between years of education and income. Linear Regression will allow us to find the best fit lin or best fit model that will allow us to predict the income of a person given their years of education.
 
@@ -585,9 +418,7 @@ plt.show()
 
 </CodeOutputBlock>
 
-But we have another feature, seniority level, that we can use to predict income. We can use both features to predict income, and this is called multiple linear regression.
-
-Let's visualized the relationship between those 3 variables using a 3D scatter plot.
+But let's try to get, seniority level in the mix. Visualize it an 3D scatter plot.
 
 
 ```python
@@ -642,124 +473,76 @@ fig.show()
 
 we can see that we can get a surface model that can cut through the data points, and this is the best fit model. Once we start using more than one variable as independent variables, or explanatory variables, that's multiple linear regression.
 
-polynomial regression is a special case of multiple linear regression, where we're using polynomial features instead of linear features. as in the data is usually can't be described by a straight line or a plane, but by a curve, or a curved surface.
-
-Let me show that on a different dataset here
+Finding that line, finding that surface, finding that curve, that's the goal of regression models. once you have more than 2 independent variables, it's not easy to visualize the model, but the math will still hold.
 
 
-```python
-income2_df = pd.read_csv('data/position_salaries.csv')
-income2_df
-```
-    
-<HTMLOutputBlock >
+Now that we know what we want to achieve, let's talk about the model and its notation.
+
+See you in the next video.
 
 
+## Model and Notations
+This is a very short video, but it's very important. 
+It introduces the notations that you'll find in a lot of machine learning algorithms, and in other machine learning courses and books.
+so it's important to understand them.
 
+Before we talk about the model notation, let's talk about the data notations.
 
-```html
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+Every dataset we work with has a number (m) of (records, observations, signals, instances, data point), these are all synonyms.
+Each of those observations ia a vector of (features, independent variables, explanatory variables, predictors, dimensions, attributes) (x) and a for labelled data, or data we use in supervised learning we also have a target (y). These are also called targets, dependent variables, or a responses, maybe classes, or a categories if it's a class.
+the number of features is (n). 
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+so for this dataset, we can say that:
+- we have 30 records, m = 30
+- we have 2 features, n = 2
+- features are years of education, and seniority level
+- target is income
 
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Position</th>
-      <th>Level</th>
-      <th>Salary</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Business Analyst</td>
-      <td>1.0</td>
-      <td>45000</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Junior Consultant</td>
-      <td>2.0</td>
-      <td>50000</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Senior Consultant</td>
-      <td>3.0</td>
-      <td>60000</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Manager</td>
-      <td>4.0</td>
-      <td>80000</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Country Manager</td>
-      <td>5.0</td>
-      <td>110000</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>Region Manager</td>
-      <td>6.0</td>
-      <td>150000</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>Partner</td>
-      <td>7.0</td>
-      <td>200000</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>Senior Partner</td>
-      <td>8.0</td>
-      <td>300000</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>C-level</td>
-      <td>9.0</td>
-      <td>500000</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>C-level</td>
-      <td>9.5</td>
-      <td>700000</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>CEO</td>
-      <td>10.0</td>
-      <td>1000000</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-```
+Now let's forget about machine learning for a second, and talk about something we all know from high school math, the equation of a line.
 
+$$y = mx + b$$
 
+where:
+- m: slope
+- c: y-intercept or the bias term, or the value of y when x = 0
 
-</HTMLOutputBlock>
+sounds familiar? if we you want to get the y value, you multiply the x value by the slope, and add the y-intercept.
 
 
 ```python
-sns.scatterplot(x='Level', y='Salary', data=income2_df)
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(-5, 5, 11)
+
+def plot_line(y, color):
+  y_ = eval(y)
+  plt.plot(x, y_, label=f'y={y}', marker='o', markersize=5, color=color)
+  plt.legend(loc='best')
+  plt.xlabel('x')
+  plt.ylabel('y')
+
+print(x)
+```
+
+<CodeOutputBlock lang="python">
+
+```
+    [-5. -4. -3. -2. -1.  0.  1.  2.  3.  4.  5.]
+```
+
+</CodeOutputBlock>
+
+so we are able to represent a line using those 2 parameters.
+
+
+```python
+plot_line(y='x', color='red')
+# plot_line(y='3*x+5', color='blue')
+# plot_line(y='-2*x+4', color='green')
+# plot_line(y='2*x', color='purple')
+
+plt.grid()
 plt.show()
 ```
 
@@ -767,49 +550,116 @@ plt.show()
 
 ```
     
-![png](_transcript_files/output_20_0.png)
+![png](_transcript_files/output_22_0.png)
     
 ```
 
 </CodeOutputBlock>
 
-Obviously, this data can't be described by a straight line, but by a curve. So we can use polynomial features instead of linear features to describe this data.
+ok so we mentioned for simple linear regression, the desired model, the desired outcome is to draw a line. so essentially, we're trying to figure out what the value of m and b are, so that we can draw a line that fits our data.
 
-Now that we know what we want to achieve, let's talk about the notations we'll be using.
-
-See you in the next video.
-
-## Notations
-This is a very short video, but it's very important. It introduces the notations we'll be using throughout the course. you'll find that a lot of this notations are used in other machine learning algorithms, and in other machine learning courses and books.
-so it's important to understand them.
-
-Let's start with the generic machine learning notations.
-Now, whenever you have a dataset, which is a collection of data points:
-- you have an (m) number of (records, observations, signals, instances, data point), these are all synonyms.
-- Each one of those data points is represented by a vector of (n, k) number of (features, independent variables, explanatory variables, predictors, dimensions, attributes).
-- For supervised learning, you dataset would also have a label for each of those (m) records. Labels are also known as: targets, dependent variables, or a responses, maybe classes, or a categories if it's a class.
-
-so given the following dataset, we can say that:
-- we have 30 records, m = 30
-- we have 3 features, n = 3
-- features are years of education, and seniority level
-- target is income
-
-now for linear regression, we have the following notations:
-The model is often represented in latex as:
-
-$$\hat{y} = h(x) = \theta_{0} + \theta_{1}x_{1} + \theta_{2}x_{2} + ... + + \theta_{n}x_{n}$$
+it's the same formula but the notation is different. we say
+$$\hat{y} = h(x) = \theta_{0} + \theta_{1}x$$
 
 where:
+- $\hat{y}$: the predicted value, also called the hypothesis function $h(x)$
+- $\theta_{0}$: the bias term, or the y-intercept
+- $\theta_{1}$: the slope of the line
 
-- X: input features
-- i: index of the feature
-- x(i): the ith instance of the input variable
-- y(i): the ith instance of the output variable
-- yˆ: the predicted value of y
-- theta: the model parameters, or the feature weights
+it's as if the $\theta_{0}$ was multiplied by $x^{0} = 1$
+
+ok but let's generalize that so we can use to represent a plane, or a surface.
+
+$$\hat{y} = h(x) = \theta_{0} + \theta_{1}x_{1} + \theta_{2}x_{2}$$
+
+this is as if x2 was the z-axis, and we're trying to draw a plane that satisfies the equation.
 
 
+```python
+fig = plt.figure()
+
+ax = fig.add_subplot(111,projection='3d')
+
+x1, x2 = np.meshgrid(range(10), range(10))
+
+y_hat = (9 - x1 - x2)
+
+ax.plot_surface(x1, x2, y_hat, alpha=0.5)
+
+plt.show()
+```
+
+<CodeOutputBlock lang="python">
+
+```
+    
+![png](_transcript_files/output_24_0.png)
+    
+```
+
+</CodeOutputBlock>
+
+so that would be your multiple linear regression model. so the most generalized form of this equation is:
+
+$$\hat{y} = h(x) = \theta_{0} + \theta_{1}x_{1} + \theta_{2}x_{2} + ... + \theta_{n}x_{n}$$
+
+or the vectorized form of this would be:
+
+$$\hat{y} = h(x) = \Theta^{T}X$$
+
+if you're not familiar with the vectorized form, don't worry about it. it's just a way to represent the same equation in a more compact way. Unless you're creating your own implementation of the algorithm, you don't need to worry about how all the math is done, but it's just important to understand how the model works, so you understand the results you're getting.
+
+so to summarize the notations:
+- $X$: the matrix of features, or the matrix of independent variables
+- $\Theta$: the vector of parameters, or the vector of coefficients, the values we're adjusting to fit the model.
+- $\hat{y}$: the predicted value, also called the hypothesis function $h(x)$
+
+now that we know the model, let's talk about how we can train the model. how we can find the best values for $\Theta$.
+
+## Linear Regression - Performance Measure/Cost Function
+In simple linear regression, we aim to get a a line that can represent the data we have as best as possible. So we need to define what "best" means.
+why do we say that this line here is better than this line here?
+
+
+```python
+# a pandas dataframe with 2 columns: x and y
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = [1, 1.5, 2.5, 3, 4]
+y = [1, 2.3, 2.1, 3, 2.9]
+
+df = pd.DataFrame({'x': x, 'y': y})
+# plot the data
+
+# Scatter plot of the dots
+f, ax = plt.subplots(figsize=(5,5))
+ax.scatter(df['x'], df['y'])
+
+# Plot an arbitrary line
+x = np.linspace(0, 4, 11)
+y_bad = 2.2+ -x
+y_good = 0.6*x + 0.5
+ax.plot(x,y_bad, label=f'y=2.25 - bad')
+ax.plot(x,y_good, label=f'y=2.25 - good')
+
+ax.grid(alpha=0.2)
+plt.show()
+```
+
+<CodeOutputBlock lang="python">
+
+```
+    
+![png](_transcript_files/output_27_0.png)
+    
+```
+
+</CodeOutputBlock>
+
+We also know that value of m or the slope is the change in y divided by the change in x. and the value of b is the y-intercept.
+$$y = \frac{y_{2} - y_{1}}{x_{2} - x_{1}}x + b$$
 
 ## Simple Linear Regression - Drawing lines and performance measure
 In this video, we'll talk about simple linear regression, which is a special case of multiple linear regression, where we're using a single feature to predict a single value.
@@ -857,7 +707,7 @@ plt.show()
 
 ```
     
-![png](_transcript_files/output_25_0.png)
+![png](_transcript_files/output_31_0.png)
     
 ```
 
@@ -924,7 +774,7 @@ plt.show()
 
 ```
     
-![png](_transcript_files/output_29_0.png)
+![png](_transcript_files/output_35_0.png)
     
 ```
 
@@ -964,7 +814,7 @@ plt.show()
 
 ```
     
-![png](_transcript_files/output_30_0.png)
+![png](_transcript_files/output_36_0.png)
     
 ```
 
@@ -981,8 +831,6 @@ ax.scatter(df['x'], df['y'])
 x = np.linspace(0, 4, 11)
 y = 0*x + 2.2
 ax.plot(x,y, label=f'y=2.25')
-# ax.set_ylim(0)
-# ax.set_xlim(0)
 
 ax.plot([1,1],[1, 2.2], color='red', linestyle='dotted', alpha=0.5)
 ax.text(1.1, 1.5, '1.44')
@@ -1005,7 +853,7 @@ plt.show()
 
 ```
     
-![png](_transcript_files/output_31_0.png)
+![png](_transcript_files/output_37_0.png)
     
 ```
 
@@ -1024,7 +872,11 @@ Then we change the parameters, change the line, and you calculate the loss funct
 
 so far so good, but how do we get this minimum in the loss?
 
-we use a formula called gradient descent. this function is used in many machine learning algorithms, not just linear regression. Let's talk about it in the next video.
+we use a formula called gradient descent. this function is used in many machine learning algorithms, not just linear regression. in a following optional video, I will talk about that.
+
+This process here for simple linear regression is exactly the same as the process for multiple linear regression, except that we have more than one feature, and we have more than one parameter.
+
+
 
 ## Gradient Descent
 In this video, we'll talk about gradient descent, which is a very important algorithm in machine learning. It's used in many machine learning algorithms, not just linear regression.
@@ -1034,14 +886,44 @@ supposed you're on a mountain, it's dark, it's foggy, and you can only feel the 
 
 For any of your feature coefficients, you start somewhere and then you calculate the gradient of the slope, and then you move in the direction of the gradient, and then you calculate the gradient again, and then you move in the direction of the gradient, and it keeps doing this until it reaches the minimum.
 
-$$\theta^{ next step} = \theta - \eta . MSE(\theta) $$
+$$\Theta^{ next step} = \Theta - \eta . MSE(\Theta) $$
 where:
-- theta: the feature coefficient
+- theta: the feature coefficients
 - eta: the learning rate
 
-Now if you're 
-
+I'm presenting this formula in a vectorized form, but you can also write it in a loop form.
 I think going over the math behind this formula is a bit out of scope for this course, but I'll leave a link to a video that explains it in detail.
+
+anyway every coefficient is updated simultaneously, so you don't update one coefficient, and then update the other coefficient, and then update the other coefficient, and so on. you update all the coefficients simultaneously.
+
+everytime you update the coefficients, you calculate the cost function, and calculate the gradient, and you move in the direction of the gradient, and you keep doing this until you reach the minimum, a point where the gradient is zero (or very close to zero). a value where the update theta values doen't change.
+
+In a way, this very simple problem seems that it'll take a lot of coding to solve it, but thankfully, a library called scikit-learn has a class called LinearRegression that does all the heavy lifting for us. We'll talk about it in the next video.
+
+## Linear Regression in Scikit-Learn
+Talk is cheap, let's see some code.
+Thankfully, we won't need to do all of those calculations by hand, because scikit-learn has a class called LinearRegression that does all the heavy lifting for us.
+
+```python
+from sklearn.linear_model import LinearRegression
+model = LinearRegression()
+model.fit(df['x'], df['y'])
+```
+
+# Polynomial Regression
+polynomial regression is a special case of multiple linear regression, where we're using polynomial features instead of linear features. as in the data is usually can't be described by a straight line or a plane, but by a curve, or a curved surface.
+
+Let me show that on a different dataset here
+
+
+```python
+income2_df = pd.read_csv('data/position_salaries.csv')
+income2_df
+sns.scatterplot(x='Level', y='Salary', data=income2_df)
+plt.show()
+```
+
+Obviously, this data can't be described by a straight line, but by a curve. So we can use polynomial features instead of linear features to describe this data.
 
 ## Notes
 - feature scaling is important for gradient descent
