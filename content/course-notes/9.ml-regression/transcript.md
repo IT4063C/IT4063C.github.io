@@ -727,11 +727,72 @@ Let's see an example here. using this same data here.
 ```python
 import pandas as pd
 
-x = [1, 1.5, 2.5, 3, 4]
-y = [1, 2.3, 2.1, 3, 2.9]
-
-df = pd.DataFrame({'x': x, 'y': y})
+df = pd.DataFrame([[1, 1], [1.5, 2.3], [2.5, 2.1], [3, 3], [4, 2.9]], columns=['x', 'y'])
+df
 ```
+    
+<HTMLOutputBlock >
+
+
+
+
+```html
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.5</td>
+      <td>2.3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.5</td>
+      <td>2.1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4.0</td>
+      <td>2.9</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+```
+
+
+
+</HTMLOutputBlock>
 
 we'll just start with a random line, any line, 
 
@@ -815,8 +876,14 @@ import matplotlib.pyplot as plt
 f, ax = plt.subplots(figsize=(5,5))
 ax.scatter(df['x'], df['y'])
 
-x = np.linspace(0, 4, 11)
+x = np.linspace(0, 4, 5)
 y = 0*x + 2.2
+y_ = 0*df['x'] + 2.2
+
+residuals = (y_ - df['y'])**2
+SE = np.sum(residuals)
+MSE = np.mean(residuals)
+
 ax.plot(x,y, label=f'y=2.25')
 
 ax.plot([1,1],[1, 2.2], color='red', linestyle='dotted', alpha=0.5)
@@ -830,7 +897,7 @@ ax.text(3.1, 2.4, '0.64')
 ax.plot([4,4],[2.9, 2.2], color='red', linestyle='dotted', alpha=0.5)
 ax.text(4.1, 2.6, '0.49')
 
-ax.text(2, 1.5, '∑ = 2.59\nmean = 0.518', fontsize=20, color='red')
+ax.text(2, 1.5, f'∑={SE}\nMSE={MSE}', fontsize=20, color='red')
 
 ax.grid(alpha=0.2)
 plt.show()
@@ -862,8 +929,14 @@ import matplotlib.pyplot as plt
 f, ax = plt.subplots(figsize=(5,5))
 ax.scatter(df['x'], df['y'])
 
-x = np.linspace(0, 4, 11)
+x = np.linspace(0, 4, 5)
 y = x + 0.5
+y_ = df['x'] + 0.5
+
+residuals = (y_ - df['y'])**2
+SE = np.sum(residuals)
+MSE = np.mean(residuals)
+
 ax.plot(x,y, label=f'y=0.5 + x')
 
 ax.plot([1,1],[1, 1.5], color='red', linestyle='dotted', alpha=0.5)
@@ -877,7 +950,7 @@ ax.text(3.1, 2.4, '0.25')
 ax.plot([4,4],[2.9, 4.5], color='red', linestyle='dotted', alpha=0.5)
 ax.text(4.1, 2.6, '2.56')
 
-ax.text(1.5, .5, '∑ = 3.96\nmean= 0.792', fontsize=20, color='red')
+ax.text(1.5, .5, f'∑={SE}\nMSE={MSE}', fontsize=20, color='red')
 
 ax.grid(alpha=0.2)
 plt.show()
@@ -903,22 +976,28 @@ import matplotlib.pyplot as plt
 f, ax = plt.subplots(figsize=(5,5))
 ax.scatter(df['x'], df['y'])
 
-x = np.linspace(0, 4, 11)
-y = 0.588*x + 0.92
-ax.plot(x,y, label=f'y= 0.92 + 0.558x')
+x = np.linspace(0, 4, 5)
+y = 0.5*x + 1
+y_ = 0.5*df['x'] + 1
 
-ax.plot([1,1],[1, 1.508], color='red', linestyle='dotted', alpha=0.5)
-ax.text(1.1, 1.5, '0.258')
-ax.plot([1.5,1.5],[2.3, 1.802], color='red', linestyle='dotted', alpha=0.5)
-ax.text(1.6, 2.25, '0.248004')
-ax.plot([2.5,2.5],[2.1, 2.39], color='red', linestyle='dotted', alpha=0.5)
-ax.text(2.6, 2.12, '0.0841')
-ax.plot([3,3],[3, 2.684], color='red', linestyle='dotted', alpha=0.5)
-ax.text(3.1, 2.4, '0.099856')
-ax.plot([4,4],[2.9, 3.272], color='red', linestyle='dotted', alpha=0.5)
-ax.text(4.1, 2.6, '0.138384')
+residuals = (y_ - df['y'])**2
+SE = np.sum(residuals)
+MSE = np.mean(residuals)
 
-ax.text(1.5, 1, '∑ = 0.828444\nmean= 0.1656688', fontsize=20, color='red')
+ax.plot(x,y, label=f'y= 0.5x + 1')
+
+ax.plot([1,1],[1, 1.5], color='red', linestyle='dotted', alpha=0.5)
+ax.text(1.1, 1.5, '0.25')
+ax.plot([1.5,1.5],[2.3, 1.75], color='red', linestyle='dotted', alpha=0.5)
+ax.text(1.6, 2.25, '0.025')
+ax.plot([2.5,2.5],[2.1, 2.25], color='red', linestyle='dotted', alpha=0.5)
+ax.text(2.6, 2.12, '0.09')
+ax.plot([3,3],[3, 2.5], color='red', linestyle='dotted', alpha=0.5)
+ax.text(3.1, 2.4, '0.09')
+ax.plot([4,4],[2.9, 3], color='red', linestyle='dotted', alpha=0.5)
+ax.text(4.1, 2.6, '0.16')
+
+ax.text(1.5, 1, f'∑={SE}\nMSE={MSE}', fontsize=20, color='red')
 
 ax.grid(alpha=0.2)
 plt.show()
@@ -978,7 +1057,8 @@ and we'll see later in the module.
 
 ## Linear Regression in Scikit-Learn
 Talk is cheap, let's see some code.
-Thankfully, we won't need to do all of those calculations by hand, because scikit-learn has a class called LinearRegression that does all the heavy lifting for us.
+While there was a lot of math behind how linear regression models work, Scikit-learn abstracts all of that away from us, and gives us a very simple API to work with.
+That may not always be possible, or even desirable, which is why you need to make sure that you understand enough about the model you're using, so you can make the right decisions.
 
 ```python
 from sklearn.linear_model import LinearRegression
@@ -990,29 +1070,347 @@ model.fit(df['x'], df['y'])
 ```python
 # linear regression
 from sklearn.linear_model import LinearRegression
+import pandas as pd
 
-x = np.array([1, 1.5, 2.5, 3, 4]).reshape(-1, 1)
-y = np.array([1, 2.3, 2.1, 3, 2.9]).reshape(-1, 1)
-
+df = pd.DataFrame({'x': [1, 1.5, 2.5, 3, 4], 'y': [1, 2.3, 2.1, 3, 2.9]})
+display(df)
 # create a linear regression model
 model = LinearRegression()
-model.fit(x,y)
+model.fit(df[['x']], df['y'])
 
-model.coef_
+model.coef_, model.intercept_
+```
+    
+<HTMLOutputBlock >
+
+
+```html
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.5</td>
+      <td>2.3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2.5</td>
+      <td>2.1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4.0</td>
+      <td>2.9</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+```
+
+
+
+
+
+    (array([0.55789474]), 0.9210526315789476)
+
+
+
+</HTMLOutputBlock>
+
+
+```python
+# plot the data
+import matplotlib.pyplot as plt
+
+f, ax = plt.subplots(figsize=(5,5))
+ax.scatter(df['x'], df['y'])
+
+x = np.linspace(0, 4, 5)
+y = model.coef_[0]*x + model.intercept_
+y_ = model.coef_[0]*df['x'] + model.intercept_
+
+residuals = (y_ - df['y'])**2
+SE = np.sum(residuals)
+MSE = np.mean(residuals)
+
+ax.plot(x,y, label=f'y= {model.intercept_} + {model.coef_[0]}x')
+
+ax.plot([1,1],[1, 1.478947], color='red', linestyle='dotted', alpha=0.5)
+ax.text(1.1, 1.5, '0.229391')
+ax.plot([1.5,1.5],[2.3, 1.757895], color='red', linestyle='dotted', alpha=0.5)
+ax.text(1.6, 2.25, '0.293878')
+ax.plot([2.5,2.5],[2.1, 2.315789], color='red', linestyle='dotted', alpha=0.5)
+ax.text(2.6, 2.12, '0.046565')
+ax.plot([3,3],[3, 2.594737], color='red', linestyle='dotted', alpha=0.5)
+ax.text(3.1, 2.4, '0.164238')
+ax.plot([4,4],[2.9, 3.152632], color='red', linestyle='dotted', alpha=0.5)
+ax.text(4.1, 2.6, '0.063823')
+
+ax.text(1.5, 1, f'∑={SE}\nMSE={MSE}', fontsize=20, color='red')
+
+ax.grid(alpha=0.2)
+plt.show()
 ```
 
 <CodeOutputBlock lang="python">
 
 ```
-    array([[0.55789474]])
+    
+![png](_transcript_files/output_44_0.png)
+    
 ```
 
 </CodeOutputBlock>
 
+That's it really. LinearRegression abstracted away all the math. you don't even need to set the learning rate. 
+
+if you have an input and want to get the predicted value, we can use the coefficient and the intercept and create the equation for the line, and then plug in the input value to get the predicted value.
+
+too much work, I thought so too. so we can use the predict method to get the predicted value.
+
+
+```python
+model.predict([[3.5]])
+```
+
+<CodeOutputBlock lang="python">
+
+```
+    /Users/gilanyym/.local/share/virtualenvs/IT4063C.github.io-Lk8id6Bb/lib/python3.10/site-packages/sklearn/base.py:450: UserWarning:
+    
+    X does not have valid feature names, but LinearRegression was fitted with feature names
+    
+
+
+
+
+
+    array([2.87368421])
+```
+
+</CodeOutputBlock>
+
+now I'm skipping a really important step here which is splitting the data into training and test sets. but I'll talk about in a later.
+Also, I'm not doing any feature engineering here, but I'll talk about that in a later video.
+
+so let's apply that to some data. and we're back to the income dataset.
+
+
+```python
+sns.scatterplot(x='Education', y='Income', data=income_df)
+plt.show()
+```
+
+<CodeOutputBlock lang="python">
+
+```
+    
+![png](_transcript_files/output_49_0.png)
+    
+```
+
+</CodeOutputBlock>
+
+
+```python
+from sklearn.linear_model import LinearRegression
+
+income_model = LinearRegression()
+income_model.fit(income_df[['Education']], income_df['Income'])
+
+income_model.coef_, income_model.intercept_
+```
+
+<CodeOutputBlock lang="python">
+
+```
+    (array([6.38716122]), -41.916612209787374)
+```
+
+</CodeOutputBlock>
+
+
+```python
+sns.scatterplot(x='Education', y='Income', data=income_df)
+x = np.linspace(10, 22, 5)
+y = income_model.coef_[0]*x + income_model.intercept_
+y_ = income_model.coef_[0]*df['x'] + income_model.intercept_
+
+residuals = (y_ - df['y'])**2
+SE = np.sum(residuals)
+MSE = np.mean(residuals)
+
+plt.plot(x,y, label=f'y= {income_model.intercept_} + {income_model.coef_[0]}x', color='red')
+
+plt.show()
+```
+
+<CodeOutputBlock lang="python">
+
+```
+    
+![png](_transcript_files/output_51_0.png)
+    
+```
+
+</CodeOutputBlock>
+
+ok let's try multiple linear regression, more than one feature. Let's do that in the next video.
+
+## Multiple Linear Regression
+
+
+```python
+from sklearn.linear_model import LinearRegression
+
+income_model = LinearRegression()
+income_model.fit(income_df[['Education', 'Seniority']], income_df['Income'])
+
+income_model.coef_, income_model.intercept_
+```
+
+<CodeOutputBlock lang="python">
+
+```
+    (array([5.89555596, 0.17285547]), -50.08563875473378)
+```
+
+</CodeOutputBlock>
+
+
+```python
+## Prepare the data for Visualization
+import numpy as np
+
+x_surf, y_surf = np.meshgrid(
+  np.linspace(income_df.Education.min(), income_df.Education.max(), 100),
+  np.linspace(income_df.Seniority.min(), income_df.Seniority.max(), 100)
+)
+surfaceX = pd.DataFrame({'Education': x_surf.ravel(), 'Seniority': y_surf.ravel()})
+predictedIncomeForSurface=income_model.predict(surfaceX)
+
+## convert the predicted result in an array
+predictedIncomeForSurface=np.array(predictedIncomeForSurface)
+predictedIncomeForSurface
+```
+
+<CodeOutputBlock lang="python">
+
+```
+    array([ 12.32703024,  13.01700126,  13.70697228, ..., 108.22241178,
+           108.9123828 , 109.60235383])
+```
+
+</CodeOutputBlock>
+
+
+```python
+# Visualize the Data for Multiple Linear Regression
+from mpl_toolkits.mplot3d import Axes3D
+
+
+fig = plt.figure(figsize=(20,10))
+### Set figure size
+ax = fig.add_subplot(111, projection='3d')
+ax.scatter(income_df['Education'],income_df['Seniority'],income_df['Income'],c='red', marker='o', alpha=0.5)
+ax.plot_surface(x_surf, y_surf, predictedIncomeForSurface.reshape(x_surf.shape), color='b', alpha=0.3)
+ax.set_xlabel('Education')
+ax.set_ylabel('Seniority')
+ax.set_zlabel('Income')
+plt.show()
+```
+
+<CodeOutputBlock lang="python">
+
+```
+    
+![png](_transcript_files/output_55_0.png)
+    
+```
+
+</CodeOutputBlock>
+
+and it doesn't matter how many additional features you add to the model, this would still hold. As long as the model we're predicting can fit this model. 
+Once we're past the 3d, we don't really know if the linear model is approproate for the data, since we can't visualize it. 
+so as a machine learning professional, you'd be trying different models and algorithms, evaluating them, and then choosing the best one.
+
 # Polynomial Regression
 polynomial regression is a special case of multiple linear regression, where we're using polynomial features instead of linear features. as in the data is usually can't be described by a straight line or a plane, but by a curve, or a curved surface.
 
-Let me show that on a different dataset here
+You know from before that as the model polynomial degree increases, the model complexity increases, and the model becomes more flexible. and that's why we can fit more complex data with polynomial regression.
+
+with a single feature x, if I use polynomial model, I'm able to fit a more flexible model. but you want to be careful, because if you use a polynomial model with a high degree, you can overfit the data.
+
+
+
+
+```python
+x = np.linspace(-10, 10, 20)
+first_degreee_y = 20*x + 1
+second_degree_y = 10*x**2 + 2*x + 1
+third_degree_y = 0.5*x**3 + x**2 + 2*x + 1
+fourth_degree_y = 0.1*x**4 + 0.5*x**3 + x**2 + 2*x + 1
+# visualize the data with different polynomial degrees
+f, ax = plt.subplots(figsize=(5,5))
+ax.plot(x,first_degreee_y, label='1st degree')
+ax.plot(x,second_degree_y, label='2nd degree')
+ax.plot(x,third_degree_y, label='3rd degree')
+ax.plot(x,fourth_degree_y, label='4th degree')
+ax.legend()
+ax.grid(alpha=0.2)
+plt.show()
+```
+
+<CodeOutputBlock lang="python">
+
+```
+    
+![png](_transcript_files/output_58_0.png)
+    
+```
+
+</CodeOutputBlock>
+
+Now mathematically, polynomial regression is the same as multiple linear regression, except that we're using polynomial features instead of linear features.
+
+this was linear regression:
+$$\hat{y} = h(x) = \theta_{0} + \theta_{1}x_{1} + \theta_{2}x_{2}$$
+
+this is polynomial regression:
+$$\hat{y} = h(x) = \theta_{0} + \theta_{1_{x1}}x_{1} + \theta_{2_{x1}}x_{1}^{2} + \theta_{3_{x1}}x_{1}^{3} + \theta_{1_{x2}}x_{2} + \theta_{2_{x2}}x_{2}^{2} + \theta_{3_{x2}}x_{2}^{3} + ... $$
+
+For every feature x, you get multiple terms with different degrees. and you can see that the model is getting more complex as the degree increases.
 
 
 ```python
@@ -1026,13 +1424,126 @@ plt.show()
 
 ```
     
-![png](_transcript_files/output_45_0.png)
+![png](_transcript_files/output_60_0.png)
     
 ```
 
 </CodeOutputBlock>
 
-Obviously, this data can't be described by a straight line, but by a curve. So we can use polynomial features instead of linear features to describe this data.
+If I was to fit it using linear regression, I would get a straight line, and if I was to fit it using polynomial regression, I would get a curved line.
+
+
+```python
+income2_model = LinearRegression()
+income2_model.fit(income2_df[['Level']], income2_df['Salary'])
+
+income2_model.coef_, income2_model.intercept_
+```
+
+<CodeOutputBlock lang="python">
+
+```
+    (array([85637.00234192]), -211689.69555035135)
+```
+
+</CodeOutputBlock>
+
+
+```python
+sns.scatterplot(x='Level', y='Salary', data=income2_df)
+x = np.linspace(1, 12, 20)
+y = income2_model.coef_[0]*x + income2_model.intercept_
+y_ = income2_model.coef_[0]*income2_df['Level'] + income2_model.intercept_
+
+residuals = (y_ - income2_df['Salary'])**2
+SE = np.sum(residuals)
+MSE = np.mean(residuals)
+
+plt.plot(x,y, label=f'y= {income_model.intercept_} + {income_model.coef_[0]}x', color='red')
+
+plt.show()
+```
+
+<CodeOutputBlock lang="python">
+
+```
+    
+![png](_transcript_files/output_63_0.png)
+    
+```
+
+</CodeOutputBlock>
+
+
+```python
+from sklearn.preprocessing import PolynomialFeatures
+
+poly = PolynomialFeatures(degree=2)
+poly_X= poly.fit_transform(income2_df[['Level']])
+poly_X.shape
+polynomial_income2_model = LinearRegression()
+polynomial_income2_model.fit(poly_X, income2_df['Salary'])
+
+sns.scatterplot(x='Level', y='Salary', data=income2_df)
+
+x = np.linspace(1, 12, 20)
+y = polynomial_income2_model.predict(poly.fit_transform(x.reshape(-1,1)))
+y_ = income2_model.coef_[0]*income2_df['Level'] + income2_model.intercept_
+
+residuals = (y_ - income2_df['Salary'])**2
+SE = np.sum(residuals)
+MSE = np.mean(residuals)
+
+plt.plot(x,y, label=f'y= {income_model.intercept_} + {income_model.coef_[0]}x', color='red')
+
+plt.show()
+```
+
+<CodeOutputBlock lang="python">
+
+```
+    
+![png](_transcript_files/output_64_0.png)
+    
+```
+
+</CodeOutputBlock>
+
+try the above using different degrees, and you'll see that the model complexity increases as the degree increases.
+
+Let's do it again using the the income dataset, multiple polynomial features, and see how it looks.
+
+I will be introducing a tool from scikit-learn called pipeline, which is a very useful tool for preprocessing data and training models.
+
+
+```python
+# Visualize the same data using different polynomial degrees
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.pipeline import make_pipeline
+
+fig = plt.figure(figsize=(20,10))
+### Set figure size
+ax = fig.add_subplot(111, projection='3d')
+ax.scatter(income_df['Education'],income_df['Seniority'],income_df['Income'],c='red', marker='o', alpha=0.5)
+
+for degree in [1,2,3,4]:
+    model = make_pipeline(PolynomialFeatures(degree), LinearRegression())
+    model.fit(income_df[['Education', 'Seniority']], income_df['Income'])
+    predictedIncomeForSurface=model.predict(surfaceX)
+    ax.plot_surface(x_surf, y_surf, predictedIncomeForSurface.reshape(x_surf.shape), alpha=0.3)
+```
+
+<CodeOutputBlock lang="python">
+
+```
+    
+![png](_transcript_files/output_67_0.png)
+    
+```
+
+</CodeOutputBlock>
+
+# Feature Scaling
 
 ## Notes
 - feature scaling is important for gradient descent
@@ -1043,3 +1554,25 @@ https://medium.com/@thaddeussegura/multiple-linear-regression-in-200-words-data-
 https://medium.com/@thaddeussegura/polynomial-regression-in-200-words-2b1f4f8b5c5a
 
 Finally we'll end the module with a complete end-to-end example of a machine learning project with all of its cleaning, preprocessing steps.
+
+
+```python
+# Visualize the same data using different polynomial degrees
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.pipeline import make_pipeline
+
+fig = plt.figure(figsize=(20,10))
+### Set figure size
+ax = fig.add_subplot(111, projection='3d')
+ax.scatter(income_df['Education'],income_df['Seniority'],income_df['Income'],c='red', marker='o', alpha=0.5)
+
+data_polynomialed = PolynomialFeatures(degree=2).fit_transform(income_df[['Education', 'Seniority']])
+data_polynomialed.shape # 30 x 6 
+polynomial_income_model = LinearRegression()
+polynomial_income_model.fit(data_polynomialed, income_df['Income'])
+# for degree in [1,2,3,4]:
+    # model = make_pipeline(PolynomialFeatures(degree), LinearRegression())
+    # model.fit(income_df[['Education', 'Seniority']], income_df['Income'])
+    # predictedIncomeForSurface=model.predict(surfaceX)
+    # ax.plot_surface(x_surf, y_surf, predictedIncomeForSurface.reshape(x_surf.shape), alpha=0.3)
+```
