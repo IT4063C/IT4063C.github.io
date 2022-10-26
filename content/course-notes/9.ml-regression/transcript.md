@@ -1022,7 +1022,7 @@ so again:
 you could actually create a 3D plot of the loss function, and you can see that the loss function is a bowl shape, and the minimum value is the bottom of the bowl.
 for every $\theta_{0}$ and $\theta_{1}$, there's a value for the loss function.
 
-<img alt="cost function" src="./assets/Surface-Plot-of-a-Two-Dimensional-Objective-Function.webp" width=600 />
+<img alt="cost function" src="./assets/Surface-Plot-of-a-Two-Dimensional-Objective-Function.webp" width="600" />
 
 ok but so far, we're updating those numbers randomly and manually. There's nothing automatic about it. so how do we automate this process?
 how can we make sure we're updating the parameters in the right direction? the direction that will minimize the loss function?
@@ -1207,7 +1207,7 @@ model.predict([[3.5]])
 <CodeOutputBlock lang="python">
 
 ```
-    /Users/gilanyym/.local/share/virtualenvs/IT4063C.github.io-Lk8id6Bb/lib/python3.10/site-packages/sklearn/base.py:450: UserWarning:
+    /Users/gilanyym/.local/share/virtualenvs/IT4063C.github.io-cdKt1PoY/lib/python3.10/site-packages/sklearn/base.py:450: UserWarning:
     
     X does not have valid feature names, but LinearRegression was fitted with feature names
     
@@ -1255,7 +1255,7 @@ income_model.coef_, income_model.intercept_
 <CodeOutputBlock lang="python">
 
 ```
-    (array([6.38716122]), -41.916612209787374)
+    (array([6.38716122]), -41.91661220978743)
 ```
 
 </CodeOutputBlock>
@@ -1303,7 +1303,7 @@ income_model.coef_, income_model.intercept_
 <CodeOutputBlock lang="python">
 
 ```
-    (array([5.89555596, 0.17285547]), -50.08563875473378)
+    (array([5.89555596, 0.17285547]), -50.08563875473381)
 ```
 
 </CodeOutputBlock>
@@ -1361,6 +1361,33 @@ plt.show()
 
 </CodeOutputBlock>
 
+
+```python
+# using plotly, plot a scatter plot of the data and the regression surface
+import plotly.express as px
+import plotly.graph_objects as go
+
+fig = px.scatter_3d(income_df, x='Education', y='Seniority', z='Income')
+fig.add_traces(
+    go.Surface(
+        x=x_surf,
+        y=y_surf,
+        z=predictedIncomeForSurface.reshape(x_surf.shape),
+        opacity=0.5,
+        showscale=False
+    )
+)
+fig.show()
+```
+
+<CodeOutputBlock lang="python">
+
+```
+
+```
+
+</CodeOutputBlock>
+
 and it doesn't matter how many additional features you add to the model, this would still hold. As long as the model we're predicting can fit this model. 
 Once we're past the 3d, we don't really know if the linear model is approproate for the data, since we can't visualize it. 
 so as a machine learning professional, you'd be trying different models and algorithms, evaluating them, and then choosing the best one.
@@ -1396,7 +1423,7 @@ plt.show()
 
 ```
     
-![png](_transcript_files/output_58_0.png)
+![png](_transcript_files/output_59_0.png)
     
 ```
 
@@ -1424,7 +1451,7 @@ plt.show()
 
 ```
     
-![png](_transcript_files/output_60_0.png)
+![png](_transcript_files/output_61_0.png)
     
 ```
 
@@ -1443,7 +1470,7 @@ income2_model.coef_, income2_model.intercept_
 <CodeOutputBlock lang="python">
 
 ```
-    (array([85637.00234192]), -211689.69555035135)
+    (array([85637.00234192]), -211689.6955503513)
 ```
 
 </CodeOutputBlock>
@@ -1468,7 +1495,7 @@ plt.show()
 
 ```
     
-![png](_transcript_files/output_63_0.png)
+![png](_transcript_files/output_64_0.png)
     
 ```
 
@@ -1503,7 +1530,7 @@ plt.show()
 
 ```
     
-![png](_transcript_files/output_64_0.png)
+![png](_transcript_files/output_65_0.png)
     
 ```
 
@@ -1537,42 +1564,8 @@ for degree in [1,2,3,4]:
 
 ```
     
-![png](_transcript_files/output_67_0.png)
+![png](_transcript_files/output_68_0.png)
     
 ```
 
 </CodeOutputBlock>
-
-# Feature Scaling
-
-## Notes
-- feature scaling is important for gradient descent
-- explain how the algorithm works
-- data splitting
-- https://medium.com/@thaddeussegura/simple-linear-regression-in-200-words-eb0835324af5
-https://medium.com/@thaddeussegura/multiple-linear-regression-in-200-words-data-8bdbcef34436
-https://medium.com/@thaddeussegura/polynomial-regression-in-200-words-2b1f4f8b5c5a
-
-Finally we'll end the module with a complete end-to-end example of a machine learning project with all of its cleaning, preprocessing steps.
-
-
-```python
-# Visualize the same data using different polynomial degrees
-from sklearn.preprocessing import PolynomialFeatures
-from sklearn.pipeline import make_pipeline
-
-fig = plt.figure(figsize=(20,10))
-### Set figure size
-ax = fig.add_subplot(111, projection='3d')
-ax.scatter(income_df['Education'],income_df['Seniority'],income_df['Income'],c='red', marker='o', alpha=0.5)
-
-data_polynomialed = PolynomialFeatures(degree=2).fit_transform(income_df[['Education', 'Seniority']])
-data_polynomialed.shape # 30 x 6 
-polynomial_income_model = LinearRegression()
-polynomial_income_model.fit(data_polynomialed, income_df['Income'])
-# for degree in [1,2,3,4]:
-    # model = make_pipeline(PolynomialFeatures(degree), LinearRegression())
-    # model.fit(income_df[['Education', 'Seniority']], income_df['Income'])
-    # predictedIncomeForSurface=model.predict(surfaceX)
-    # ax.plot_surface(x_surf, y_surf, predictedIncomeForSurface.reshape(x_surf.shape), alpha=0.3)
-```

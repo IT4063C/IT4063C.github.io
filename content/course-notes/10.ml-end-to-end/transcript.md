@@ -233,3 +233,37 @@ https://medium.com/@thaddeussegura/multiple-linear-regression-in-200-words-data-
 https://medium.com/@thaddeussegura/polynomial-regression-in-200-words-2b1f4f8b5c5a
 
 Finally we'll end the module with a complete end-to-end example of a machine learning project with all of its cleaning, preprocessing steps.
+
+# Feature Scaling
+
+## Notes
+- feature scaling is important for gradient descent
+- explain how the algorithm works
+- data splitting
+- https://medium.com/@thaddeussegura/simple-linear-regression-in-200-words-eb0835324af5
+https://medium.com/@thaddeussegura/multiple-linear-regression-in-200-words-data-8bdbcef34436
+https://medium.com/@thaddeussegura/polynomial-regression-in-200-words-2b1f4f8b5c5a
+
+Finally we'll end the module with a complete end-to-end example of a machine learning project with all of its cleaning, preprocessing steps.
+
+
+```python
+# Visualize the same data using different polynomial degrees
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.pipeline import make_pipeline
+
+fig = plt.figure(figsize=(20,10))
+### Set figure size
+ax = fig.add_subplot(111, projection='3d')
+ax.scatter(income_df['Education'],income_df['Seniority'],income_df['Income'],c='red', marker='o', alpha=0.5)
+
+data_polynomialed = PolynomialFeatures(degree=2).fit_transform(income_df[['Education', 'Seniority']])
+data_polynomialed.shape # 30 x 6 
+polynomial_income_model = LinearRegression()
+polynomial_income_model.fit(data_polynomialed, income_df['Income'])
+# for degree in [1,2,3,4]:
+    # model = make_pipeline(PolynomialFeatures(degree), LinearRegression())
+    # model.fit(income_df[['Education', 'Seniority']], income_df['Income'])
+    # predictedIncomeForSurface=model.predict(surfaceX)
+    # ax.plot_surface(x_surf, y_surf, predictedIncomeForSurface.reshape(x_surf.shape), alpha=0.3)
+```
