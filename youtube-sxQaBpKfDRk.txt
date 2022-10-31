@@ -1,0 +1,135 @@
+Hi, I’m Adriene Hill, and this is Crash
+Course Statistics.Welcome to a world of probabilities, paradoxes
+and p-values.There will be games.And thought experiments.And coin flipping.A lot of coin flipping.Statisticians love to talk about coin flipping.By the time we finish the course, you’ll
+know why we use statistics.And how.And what questions you ought to be asking
+when you run across statistics in the world.Which is ALL THE TIME.Statistics can help you make a guess whether
+or not you’re going to be accepted to Harvard.Marketers use them to sell us gold-lame pants.Netflix uses stats to predict what show we
+might want to watch next.You use statistics when you look at the weather forecast and decide what to wear--dress or jeans.Policy makers use them to decide whether or
+not to invest in more early childhood education,whether or not to spend more on mental health
+services.Statistics is all about making sense of data--and figuring out how to put that information to use.Today, we’re going to answer the question
+“What IS Statistics?”INTROThe legend says that during a late 1920’s
+English tea at Cambridge, a woman claimedthat a cup of tea with milk added last tasted different than tea where the milk was added first.The brilliant minds of the day immediately
+began to think of ways to test her claim.They organized eight cups of tea in all sorts
+of patterns to see if she really could tellthe difference between the milk first and
+tea first cups.But even after they had seen her guesses,
+how could they really decide?Because, she’d get about half the cups right
+just by randomly guessing either milk or tea.And even if she really could tell the difference,
+it’s completely possible that she wouldmiss a cup or two.So how could you tell if this woman was actually
+a tea-savant?What is the line between lucky tea guesser
+and tea supertaster?As fate would have it, future super-statistician
+and part time potato scientist Ronald A. Fisherwas in attendance.During his lifetime, Fisher began work that
+set the stage for a large portion of Statisticswhich is the focus of this series.These statistics can help us make decisions in uncertain situations, tea-taste-tests and beyond.Fisher’s insights into experimental design
+helped turn statistics into its own scientificdiscipline.And, although Fisher didn’t publish results
+of this tea-test...the story has it...thewoman sorted all the tea cups correctly.Just in case you were curious.At this point, it’s worth mentioning that
+there are two related--but separate--meaningsof the word statistics.We can refer to the field of statistics...
+which is the study and practice of collectingand analyzing data.And we can talk about statistics as in facts
+about... or summaries... of data.To answer the question “What is statistics?”,
+we should first......ask the question “What can statistics
+do?”Let's say you wake up at your desk after a
+long evening studying for finals with a cheeseburgerwrapper stuck to your face.And you wonder... "why do I eat this stuff?Is fast food controlling my life?"But then you tell yourself, "No.It's just super convenient.."But you're worried, you're thinking about
+how great it is that McDonald's serves breakfastall day RIGHT NOW.But maybe that's normal, finals are this week
+afterall, so you google the question “FastFood consumption” and you find the results
+of a fast food survey.The first thing you might do is start asking
+questions that interest you.For example, you could ask, Why do people
+eat fast food?Do people eat more fast food on the weekend
+than on weekdays?Does eating fast food stress me out?Now that we have some interesting questions,
+we need to ask ourselves an even more importantone: Can these questions be answered by statistics?Like I mentioned earlier, statistics are tools
+for us to use, but they can’t do all theheavy lifting.To answer the question about why people eat
+fast food, you can ask them to fill out aquestionnaire, but you can’t know whether
+their answers truly represent what they’rethinking.Maybe they answer dishonestly because they
+don’t want to admit that they scarf McDonaldsbecause they’re too tired to cook dinner,
+or because they are ashamed to admit theythink Del Taco is delicious, or because none
+of the given answers represented their reasons,or they may not really know why they eat fast
+food.Armed with the results of the survey, you
+could tell you that the most common reasonthat people reported eating fast food was
+convenience, or that the average number ofmeals they eat out each week is five.But you’re not truly measuring why people
+eat so much fast food.You’re measuring what we call a “proxy”,
+something that is related to what we wantto measure, but isn’t exactly what we want
+to measure.To answer whether people eat more fast food
+on the weekends, or whether eating it morethan twice a week increases stress, we’d
+not only need to know how much people areeating fast food, which our questionnaire
+asked, but also which days they eat it.And we’d need an additional measure of “stress”.You can use statistics to give a good answer
+about whether you’re going through the drive-thrumore on the weekend, but even the question
+of whether eating fast food is associatedwith higher levels of stress is hard to answer
+directly.What is stress and how can we measure it?And are people eating fast food because they
+are stressed?Or does eating all those calories make them
+stressed?It’s often the case that some of the most
+interesting questions are the ones that can’tbe directly answered by statistics--like why
+people eat fast food.Instead we find questions that we can answer--
+like whether people who eat fast food oftenwork more than eighty hours a week.The tools we use to answer these questions
+are statistics-plural--and there are two maintypes: Descriptive and Inferential.Descriptive statistics, well... they describe
+what the data show!Descriptive statistics usually include things
+like where the middle of the data is--whatstatisticians call measures of central tendency--and
+measures of how spread out the data are.They take huge amounts of information that
+may not make much intuitive sense to us, andcompress and summarize them to ...hopefully...
+give us more useful information.Let’s go to the the Thought Bubble.You’ve been working for two years in the
+local waffle factory.Day in and day out, you create the golden-browny-iest,
+tastiest frozen waffles ever created.The holes are perfectly spaced.Screaming for syrup.And now you want a raise.You deserve a raise.No one can make a waffle as well as you can.But how much do you ask for?An extra thousand dollars?An extra 5-thousand dollars?You know you’re valuable, but have no idea
+what other waffle makers get paid.So you dig around online and find there’s
+an entire subreddit devoted to waffle makers.And someone username “waffleleaks” has
+posted a spreadsheet of waffle maker salaries.Now with a quick glance at this huge list
+of numbers, you can see whether the womanwho works a similar job at the rival frozen
+waffle company makes more than you.You can see how much more you are making than
+the new guy, who’s just now learning tomix batter.But you still don’t know much about the
+paychecks of your waffle company as a whole.Or the industry.Cause it turns out there are thousands of
+waffle makers out there.And all you see is a list with data points,
+not patterns that can help you learn moreabout how much you might be able to convince
+the boss to pay you.Here is where descriptive statistics come
+in.You could calculate the average salary at
+your company as well as how spread out everyone’ssalaries are around that average.You’d be able to see whether the CEOs’
+paychecks are relatively close to the entry-levelbatter makers, or incredibly far away.And how your salary compares to both of their
+salaries.You could calculate the average salary of
+everyone in the industry with your job title.And see the high and low end of that pay.And then, armed with those descriptive statistics,
+you could confidently walk into the wafflebosses office and demand to be paid for your
+talents.Thanks, Thought Bubble.While descriptive statistics can be great,
+they only tell us the basics.Inferential statistics allows us to make….inferences.(Clever namers, those statisticians.)Inferential statistics allow us to make conclusions
+that extend beyond the data we have in hand.Imagine you have a candy barrel full of salt
+water taffy.Some pink, some white, some yellow.If you wanted to know how many of each color
+you have, you could count them.One by one by one.That’d give you a set of descriptive statistics.But who has time for all that?Or, you could grab a giant handful of taffy,
+and count just those you have pulled out,which would be using descriptive statics.If your candy was, in fact, mixed pretty evenly
+throughout the barrel, and you got a big enoughhandful, you could use inferential statistics
+on that “sample” to estimate the contentof the entire taffy stash.We ask inferential statistics to do all sorts
+of much more complicated work for us.Inferential statistics let us test an idea
+or a hypothesis.Like answering whether people in the US under
+the age of 30 eat more fast food than peopleover 30.We don’t survey EVERY person to answer that
+question.Let’s say someone tells you that their new
+brain vitamin--Smartie-vite--improves yourIQ.Do you rush out and buy it?What if they told you that the average IQ
+increase for Group A-- twenty people who tookSmartie-vite for a month--was two IQ points,
+and the average IQ increase for Group B--twentypeople who took nothing--was one IQ point.How about now?Still not sure?It is a pretty small difference right]?Inferential statistics give you the ability
+to test how likely it is that the two populationswe sampled actually have different IQ increases.However, it’s up to you, as an individual,
+to decide whether that’s convincing or not.And don’t be alarmed if the bar you set
+isn’t the same in every situation.It’s entirely okay to have different standards
+for the questions “does my cat like FancyFeast more than Meow Mix?” vs “does this
+drug cure lung cancer?”.It might take more evidence to convince you
+to take a new supposedly cancer curing drugthan to switch cat food brands.It should take more evidence to convince you
+to take a new supposedly cancer curing drugthan to switch cat food brands.With inferential tests, there will always
+be some degree of uncertainty since it canonly tell you how likely something is or is
+not.Your job is is to take that information and
+use it to make a decision *despite* that uncertainty.If Statistics were a superhero, it’s batcall
+would be uncertainty, and it’s tagline wouldbe “When you don’t know for sure, but
+doing nothing isn’t an option.”Statistics are tools.Statistics help us make sense of the vast
+amount of information in the world.Just like our eyes and ears filter out unnecessary
+stimuli to just give us the best, most usefulstuff, statistics help us filter the loads
+of data that come at us everyday.Descriptive statistics make` the data we get
+more digestible, even though we lose informationabout individual data points.Inferential statistics can help us make decisions
+about data when there’s uncertainty (likewhether Smartie-vite actually will increase
+your IQ).But statistics can’t do all of the work.They’re here to help us reason, not to reason
+for us.They help us see through uncertainty, but
+they don’t get rid of that uncertainty.To push our tool analogy a step further.Statistics, like chainsaws , are pretty useless even dangerous without understanding how they work.We need to know how to use them and how not
+to use them.As we will see in later episodes, statistics
+done poorly can lead us to some pretty sillyconclusions.And, chain sawing done poorly leads to about
+36-thousand injuries in the US each year.81% of which are lacerations.Did you know that almost no one dies because of chainsaw injuries?Once in a while, but it's very rare.95% of the people who are hurt by chain saws
+are male.This does NOT necessarily tell us that males
+are significantly worse chain sawers.Statistics can help us plan a vacation to
+Bali in December.They can help us optimize our chances of winning
+our fantasy football league.They can help us budget our meal card at college.Statistics can help us decide whether that
+additional insurance the guy at Best Buy istrying to sell us on our new blender is worth
+it.Statistics can also help us decide whether
+or not to go ahead with an invasive heart surgery.Statistics can help NGOs optimize the amount
+of food aid they send to refugee camps.They can help policymakers decide if they
+should spend more or less money on helpingstudents pay back their school loans.And can help you decide how much money you
+should be comfortable borrowing for collegein the first place.There is a lot statistics can help us with
+but some things statistics can’t do.Thinkingstatistically means knowing the difference.So, when your brother says he used statistics
+to prove that your mom loves him more youcan rest easy knowing the only question he
+answered is whether she gives him slightlymore ice cream each night.And you’ve got data suggesting she gives
+you extra sprinkles.Thanks for watching. I'll see you next time.

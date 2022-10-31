@@ -24,7 +24,6 @@ yarn-error.log*
 !/.gitignore
 docs/run_id.txt
 *.py
-*.txt
 !requirements.txt
 .ipynb_checkpoints/*
 docs/.ipynb_checkpoints/
