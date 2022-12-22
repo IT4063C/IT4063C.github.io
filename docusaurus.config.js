@@ -174,7 +174,7 @@ const config = {
     ({
       announcementBar: {
         id: 'support_us',
-        content:'Welcome to Fall 2022',
+        content:'Welcome to Spring 2023',
         backgroundColor: 'var(--ifm-color-primary)',
         textColor: '#ffffff',
         isCloseable: false,
