@@ -255,7 +255,7 @@ const config = {
             items: [
               {
                 label: "MS Teams",
-                href: "https://teams.microsoft.com/l/channel/19%3a_tqnR2n5CGeuU2m3z66opQlbaJCnVcXAKfueb125XBg1%40thread.tacv2/General?groupId=68663565-2a8c-4267-b65a-0554781a7e0f&tenantId=f5222e6c-5fc6-48eb-8f03-73db18203b63",
+                href: "https://teams.microsoft.com/l/channel/19%3ae8a4e63b3c3a43c0ad906bbb60482f3c%40thread.tacv2/%25E2%259D%2593%2520Ask%2520Questions?groupId=68663565-2a8c-4267-b65a-0554781a7e0f&tenantId=f5222e6c-5fc6-48eb-8f03-73db18203b63",
               },
               {
                 label: "⏰ Scheduler",
