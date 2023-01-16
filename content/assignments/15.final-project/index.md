@@ -6,7 +6,7 @@ draft: false
 ---
 
 ## Introduction
-This is a capstone project to demonstrate your mastery of the course material. You're expected to choose your project that interests you and that can be solved with data, and to present your project to the class.
+This project is your opportunity to work with the course instructor to explore a topic of your choice in depth. You will need to use the skills and tools taught in this course to solve a study the problem and present it to the class at the end of the semester.
 
 The project is worth 38% of your final grade.
 
