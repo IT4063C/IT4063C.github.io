@@ -45,8 +45,9 @@ const config = {
           path: "docs/ta",
           routeBasePath: "ta",
           editUrl: "https://github.com/IT4063C/IT4063C.github.io/tree/main/",
-          remarkPlugins: [require("mdx-mermaid")],
-          showLastUpdateAuthor: true,
+          remarkPlugins: [require("mdx-mermaid"), require('remark-math')],
+          rehypePlugins: [require('rehype-katex')],
+            showLastUpdateAuthor: true,
           showLastUpdateTime: true,
         },
         blog: {
@@ -79,7 +80,8 @@ const config = {
         sidebarPath: require.resolve(
           "./content/instructor/sidebarsInstructor.js"
         ),
-        remarkPlugins: [require("mdx-mermaid")],
+        remarkPlugins: [require("mdx-mermaid"), require('remark-math')],
+        rehypePlugins: [require('rehype-katex')],
         showLastUpdateAuthor: true,
         showLastUpdateTime: true,
       }),
@@ -96,7 +98,8 @@ const config = {
         sidebarPath: require.resolve(
           "./content/course-notes/sidebarsCourseNotes.js"
         ),
-        remarkPlugins: [require("mdx-mermaid")],
+        remarkPlugins: [require("mdx-mermaid"), require('remark-math')],
+        rehypePlugins: [require('rehype-katex')],
         showLastUpdateAuthor: true,
         showLastUpdateTime: true,
       }),
@@ -113,7 +116,8 @@ const config = {
         sidebarPath: require.resolve(
           "./content/assignments/sidebarsCoursework.js"
         ),
-        remarkPlugins: [require("mdx-mermaid")],
+        remarkPlugins: [require("mdx-mermaid"), require('remark-math')],
+        rehypePlugins: [require('rehype-katex')],
         showLastUpdateAuthor: true,
         showLastUpdateTime: true,
       }),
@@ -128,7 +132,8 @@ const config = {
         editUrl: "https://github.com/IT4063C/IT4063C.github.io/tree/main/",
         editCurrentVersion: true,
         sidebarPath: require.resolve("./content/syllabus/sidebarsSyllabus.js"),
-        remarkPlugins: [require("mdx-mermaid")],
+        remarkPlugins: [require("mdx-mermaid"), require('remark-math')],
+        rehypePlugins: [require('rehype-katex')],
         showLastUpdateAuthor: true,
         showLastUpdateTime: true,
       }),
@@ -143,7 +148,8 @@ const config = {
         editUrl: "https://github.com/IT4063C/IT4063C.github.io/tree/main/",
         editCurrentVersion: true,
         sidebarPath: require.resolve("./content/guides/sidebarsGuides.js"),
-        remarkPlugins: [require("mdx-mermaid")],
+        remarkPlugins: [require("mdx-mermaid"), require('remark-math')],
+        rehypePlugins: [require('rehype-katex')],
         showLastUpdateAuthor: true,
         showLastUpdateTime: true,
       }),
@@ -157,7 +163,8 @@ const config = {
         routeBasePath: "/",
         editUrl: "https://github.com/IT4063C/IT4063C.github.io/tree/main/",
         editCurrentVersion: true,
-        remarkPlugins: [require("mdx-mermaid")],
+        remarkPlugins: [require("mdx-mermaid"), require('remark-math')],
+        rehypePlugins: [require('rehype-katex')],
         showLastUpdateAuthor: true,
         showLastUpdateTime: true,
       }),
@@ -167,6 +174,13 @@ const config = {
   stylesheets: [
     "https://fonts.googleapis.com/icon?family=Material+Icons",
     "https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css",
+    {
+      href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
+      type: 'text/css',
+      integrity:
+        'sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM',
+      crossorigin: 'anonymous',
+    },
   ],
 
   themeConfig:
