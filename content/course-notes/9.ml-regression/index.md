@@ -672,7 +672,8 @@ For simple linear regression, since we're only changing 2 parameters ($\theta_{1
 
 the plot would like a bowl shape, and the minimum value (the optimum values for $\theta_{0}$ and $\theta_{1}$ is the bottom of the bowl.
 
-<img alt="cost function" src="./assets/Surface-Plot-of-a-Two-Dimensional-Objective-Function.webp" width="600" />
+
+![Cost Function](./assets/Surface-Plot-of-a-Two-Dimensional-Objective-Function.webp)
 
 
 so what is gradient descent? and how does it work?
@@ -682,7 +683,9 @@ gradient descent is used in many machine learning algorithms, not just linear re
 
 supposed you're on a mountain, it's dark, it's foggy, and you can only feel the slope of the ground below your feet. A good strategy to get down, is that you feel the ground and move it in the direction of the steepest slope. That is exactly what the gradient descent does.
 
-$$\Theta^{ next step} = \Theta - \eta . MSE(\Theta) $$
+$$
+\Theta^{ next step} = \Theta - \eta . MSE(\Theta)
+$$
 where:
 - theta: the feature coefficients
 - eta: the learning rate
