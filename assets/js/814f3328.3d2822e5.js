@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunksite=self.webpackChunksite||[]).push([[2535],{5641:e=>{e.exports=JSON.parse('{"title":"All Posts","items":[{"title":"Installing Pipenv","permalink":"/blog/installing-pipenv"},{"title":"Breaking Down Problems into Manageable Pieces and Steps","permalink":"/blog/break-down-problems"}]}')}}]);
