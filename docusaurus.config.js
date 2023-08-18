@@ -216,20 +216,24 @@ const config = {
             label: "🧭 Guides",
             items: [
               {
-                to: "guides/faq",
-                label: "FAQ",
+                to: "guides/installation-guides",
+                label: "⚙️ Installation Guides",
               },
               {
-                to: "guides/contribution",
-                label: "Contribution Guide",
+                to: "guides/faq",
+                label: "❓FAQ",
+              },
+              {
+                to: "guides/datasets",
+                label: "📀 Datasets",
               },
               {
                 to: "guides/code-style",
                 label: "Code Style Guide",
               },
               {
-                to: "guides/datasets",
-                label: "Datasets",
+                to: "guides/contribution",
+                label: "Contribution Guide",
               },
             ],
           },
