@@ -4,7 +4,7 @@ title: Git and GitHub
 ---
 
 :::info 🦉 Note 
-For Instructions on Installing and Setting up git, please check out [the installation guide in the course notes](installation-guides/git)
+For Instructions on Installing and Setting up git, please check out [the installation guide in the course notes](/guides/installation-guides/git)
 :::
 
 Also, note that the lecture videos include demos of using git with (1) just the command line, (2) using GitHub Desktop, and (3) using the Visual Studio Code extension.
