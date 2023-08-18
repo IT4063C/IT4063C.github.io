@@ -1,0 +1,43 @@
+---
+sidebar_position: 3
+title: PyEnv
+---
+Installing this is optional by highly recommended. It will allow you to easily upgrade and swtich between different versions of python.
+
+At the time of writing this guide, python is planning to release the next version of Python, version 3.12, on October 2nd, 2023. Getting PyEnv will allow you to upgrade your Python installation, and even use different versions of Python on different projects. 
+
+## For Windows
+PyEnv has a different ported version of the tool that you need to [install from here](https://pyenv-win.github.io/pyenv-win/)
+
+Follow PyEnv-for-Windows Installation Guide here to install it using PowerShell
+https://pyenv-win.github.io/pyenv-win/docs/installation.html#powershell
+
+## For macOS
+You can run the following command in your terminal
+```bash
+curl https://pyenv.run | bash
+```
+**OR**
+
+You can use Homebrew to install PyEnv, then you'll need to complete some post-installation steps, per [the documentation here](https://github.com/pyenv/pyenv#unixmacos)
+
+
+<hr />
+
+## Common Errors and Issues
+### Windows
+**I'm getting `UnauthorizedAccess` error when trying to install using PowerShell.**
+```powershell
+& : File C:\Users\yahya\install-pyenv-win.ps1 cannot be loaded because running scripts is disabled on this system. For
+more information, see about_Execution_Policies at https:/go.microsoft.com/fwlink/?LinkID=135170.
+At line:1 char:173
++ ... n.ps1" -OutFile "./install-pyenv-win.ps1"; &"./install-pyenv-win.ps1"
++ ~~~~~~~~~~~~~~~~~~~~~~~~~ 
+ + CategoryInfo          : SecurityError: (:) [], PSSecurityException 
+ + FullyQualifiedErrorId : UnauthorizedAccess
+```
+If you are getting this, then start Windows PowerShell with the “Run as administrator” option and run 
+```powershell
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
+```
+Then run the Installation command again.
