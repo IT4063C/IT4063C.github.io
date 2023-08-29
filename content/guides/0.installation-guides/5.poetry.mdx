@@ -2,3 +2,42 @@
 sidebar_position: 4
 title: Poetry
 ---
+
+To install Poetry, you call follow the official [installation instructions](https://python-poetry.org/docs/#installation).
+
+I'll copy some of that over here for convinience. But keep it mind this may have changed since copying this.
+
+## For Windows
+The following instruction are for windows users not using the Windows Subsystem for Linux (WSL).
+
+Using powershell, run the following command:
+```powershell
+(Invoke-WebRequest -Uri https://install.python-poetry.org -UseBasicParsing).Content | py -
+```
+
+:::note: Note
+If you have installed Python through the Microsoft Store, replace `py` with `python` in the command above.
+:::
+
+The installer may take care of the following step, but if after you restarted your terminal were still unable to envoke poetry, you'll need to add poetry to your `PATH` environment variable.
+the path you need to add to your env. variables is `%APPDATA%\Python\Scripts` on Windows.
+
+## For Linux, macOS, and Windows with WSL
+
+Using your terminal of choice, run the following command:
+```bash
+curl -sSL https://install.python-poetry.org | python3 -
+```
+
+you may be able to run this with just `python` instead of `python3` depending on your system. but some systems still assumes python 2 when you call `python` so it's best to be explicit.
+
+The installer may take care of the following step, but if after you restarted your terminal were still unable to envoke poetry, you'll need to add poetry to your `PATH` environment variable.
+the path you need to add to your env. variables is `$HOME/.local/bin` on Linux and macOS.
+
+
+## Verifying the installation
+To make sure you've installed poetry correctly, run the following command:
+```bash
+poetry --version
+```
+The results of this is the screenshot you'll need to provide.
