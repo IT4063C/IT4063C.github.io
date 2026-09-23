@@ -239,7 +239,7 @@ A subquery is a query that is nested inside another query, or inside another sub
 
 ### Single Value
 
-The simplest subquery returns exactly one column and exactly one row. It can be used with comparison operators =, <, <=, >, or >=.
+The simplest subquery returns exactly one column and exactly one row. It can be used with comparison operators `=`, `<`, `<=`, `>`, or `>=`.
 
 This query finds cities with the same rating as Paris:
 ```sql
