@@ -1,8 +1,9 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require("prism-react-renderer/themes/github");
-const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+const { themes } = require("prism-react-renderer");
+const lightCodeTheme = themes.github;
+const darkCodeTheme = themes.dracula;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -19,19 +20,7 @@ const config = {
   deploymentBranch: "gh-pages",
   trailingSlash: false,
 
-  themes: [
-    [
-      "@easyops-cn/docusaurus-search-local",
-      {
-        hashed: true,
-        docsRouteBasePath: ["syllabus","course-notes","assignments","guides"],
-        docsDir: ["content"],
-        language: ["en"],
-        highlightSearchTermsOnTargetPage: true,
-        explicitSearchResultPath: true,
-      },
-    ],
-  ],
+  themes: [],
 
   presets: [
     [
@@ -45,8 +34,8 @@ const config = {
           path: "docs/ta",
           routeBasePath: "ta",
           editUrl: "https://github.com/IT4063C/IT4063C.github.io/tree/main/",
-          remarkPlugins: [require("mdx-mermaid"), require('remark-math')],
-          rehypePlugins: [require('rehype-katex')],
+          remarkPlugins: [require('remark-math').default],
+          rehypePlugins: [require('rehype-katex').default],
             showLastUpdateAuthor: true,
           showLastUpdateTime: true,
         },
@@ -69,6 +58,12 @@ const config = {
 
   plugins: [
     [
+      "@cmfcmf/docusaurus-search-local",
+      {
+        language: ["en"],
+      },
+    ],
+    [
       "content-docs",
       /** @type {import('@docusaurus/plugin-content-docs').Options} */
       ({
@@ -80,8 +75,8 @@ const config = {
         sidebarPath: require.resolve(
           "./content/instructor/sidebarsInstructor.js"
         ),
-        remarkPlugins: [require("mdx-mermaid"), require('remark-math')],
-        rehypePlugins: [require('rehype-katex')],
+        remarkPlugins: [require('remark-math').default],
+        rehypePlugins: [require('rehype-katex').default],
         showLastUpdateAuthor: true,
         showLastUpdateTime: true,
       }),
@@ -98,8 +93,8 @@ const config = {
         sidebarPath: require.resolve(
           "./content/course-notes/sidebarsCourseNotes.js"
         ),
-        remarkPlugins: [require("mdx-mermaid"), require('remark-math')],
-        rehypePlugins: [require('rehype-katex')],
+        remarkPlugins: [require('remark-math').default],
+        rehypePlugins: [require('rehype-katex').default],
         showLastUpdateAuthor: true,
         showLastUpdateTime: true,
       }),
@@ -116,8 +111,8 @@ const config = {
         sidebarPath: require.resolve(
           "./content/assignments/sidebarsCoursework.js"
         ),
-        remarkPlugins: [require("mdx-mermaid"), require('remark-math')],
-        rehypePlugins: [require('rehype-katex')],
+        remarkPlugins: [require('remark-math').default],
+        rehypePlugins: [require('rehype-katex').default],
         showLastUpdateAuthor: true,
         showLastUpdateTime: true,
       }),
@@ -132,8 +127,8 @@ const config = {
         editUrl: "https://github.com/IT4063C/IT4063C.github.io/tree/main/",
         editCurrentVersion: true,
         sidebarPath: require.resolve("./content/syllabus/sidebarsSyllabus.js"),
-        remarkPlugins: [require("mdx-mermaid"), require('remark-math')],
-        rehypePlugins: [require('rehype-katex')],
+        remarkPlugins: [require('remark-math').default],
+        rehypePlugins: [require('rehype-katex').default],
         showLastUpdateAuthor: true,
         showLastUpdateTime: true,
       }),
@@ -148,8 +143,8 @@ const config = {
         editUrl: "https://github.com/IT4063C/IT4063C.github.io/tree/main/",
         editCurrentVersion: true,
         sidebarPath: require.resolve("./content/guides/sidebarsGuides.js"),
-        remarkPlugins: [require("mdx-mermaid"), require('remark-math')],
-        rehypePlugins: [require('rehype-katex')],
+        remarkPlugins: [require('remark-math').default],
+        rehypePlugins: [require('rehype-katex').default],
         showLastUpdateAuthor: true,
         showLastUpdateTime: true,
       }),
@@ -163,8 +158,8 @@ const config = {
         routeBasePath: "/",
         editUrl: "https://github.com/IT4063C/IT4063C.github.io/tree/main/",
         editCurrentVersion: true,
-        remarkPlugins: [require("mdx-mermaid"), require('remark-math')],
-        rehypePlugins: [require('rehype-katex')],
+        remarkPlugins: [require('remark-math').default],
+        rehypePlugins: [require('rehype-katex').default],
         showLastUpdateAuthor: true,
         showLastUpdateTime: true,
       }),
